@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Inicio</title>
+    <meta name="description" content="Portfolio profesional de fotografía artística">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/dynamic-styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html" class="logo">Abimael</a>
+            </div>
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
+                    <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+                    <li><a href="about.html" class="nav-link">Sobre Mí</a></li>
+                    <li><a href="blog.html" class="nav-link">Blog</a></li>
+                    <li><a href="contact.html" class="nav-link">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Portfolio Profesional</h1>
+            <p class="hero-subtitle">Fotografía Artística & Visual</p>
+            <p class="hero-description">Explorando la belleza a través de la lente</p>
+            <div class="hero-actions">
+                <a href="portfolio.html" class="btn btn-primary">Ver Portfolio</a>
+                <a href="about.html" class="btn btn-secondary">Conocer Más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Sobre Mí</h2>
+                    <p>Soy un fotógrafo apasionado por capturar momentos únicos y crear narrativas visuales que conecten con las emociones.</p>
+                    <a href="about.html" class="btn btn-outline">Leer Más</a>
+                </div>
+                <div class="about-image">
+                    <img src="images/profile/about-photo.jpg" alt="Sobre Mí" id="aboutImage">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Preview Section -->
+    <section class="portfolio-preview" id="portfolio-preview">
+        <div class="container">
+            <h2>Portfolio Destacado</h2>
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-item" data-category="intimate">
+                    <img src="images/portfolio/intimate-01.jpg" alt="Intimidad">
+                    <div class="portfolio-overlay">
+                        <h3>Intimidad</h3>
+                        <p>Fotografías que exploran la intimidad y conexión humana</p>
+                        <a href="portfolio.html" class="btn btn-white">Ver Más</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="nature">
+                    <img src="images/portfolio/nature-01.jpg" alt="Naturaleza">
+                    <div class="portfolio-overlay">
+                        <h3>Naturaleza</h3>
+                        <p>Capturas de la belleza natural y paisajes</p>
+                        <a href="portfolio.html" class="btn btn-white">Ver Más</a>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="urban">
+                    <img src="images/portfolio/urban-01.jpg" alt="Urbano">
+                    <div class="portfolio-overlay">
+                        <h3>Urbano</h3>
+                        <p>La vida urbana y arquitectura en movimiento</p>
+                        <a href="portfolio.html" class="btn btn-white">Ver Más</a>
+                    </div>
+                </div>
+            </div>
+            <div class="section-actions">
+                <a href="portfolio.html" class="btn btn-primary">Ver Todo el Portfolio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <h2>Últimas Entradas del Blog</h2>
+            <div class="blog-grid" id="blogGrid">
+                <article class="blog-post">
+                    <img src="images/blog/process-article.jpg" alt="Mi Proceso Creativo">
+                    <div class="blog-content">
+                        <h3>Mi Proceso Creativo</h3>
+                        <p>Descubre cómo desarrollo cada serie fotográfica desde la idea inicial hasta la selección final de imágenes.</p>
+                        <div class="blog-meta">
+                            <span class="date">15 Marzo 2024</span>
+                            <span class="category">Proceso Creativo</span>
+                        </div>
+                        <a href="blog.html" class="btn btn-outline">Leer Más</a>
+                    </div>
+                </article>
+                <article class="blog-post">
+                    <img src="images/blog/light-article.jpg" alt="La Importancia de la Luz Natural">
+                    <div class="blog-content">
+                        <h3>La Importancia de la Luz Natural</h3>
+                        <p>Explorando cómo la luz natural puede transformar una fotografía ordinaria en una obra de arte.</p>
+                        <div class="blog-meta">
+                            <span class="date">10 Marzo 2024</span>
+                            <span class="category">Técnica</span>
+                        </div>
+                        <a href="blog.html" class="btn btn-outline">Leer Más</a>
+                    </div>
+                </article>
+            </div>
+            <div class="section-actions">
+                <a href="blog.html" class="btn btn-primary">Ver Todas las Entradas</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title" id="footerTitle">Abimael Ortiz Álvarez</h3>
+                    <p class="footer-text" id="footerDescription">Portfolio profesional de fotografía artística</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <i class="fas fa-share-alt"></i>
+                        Redes Sociales
+                    </h4>
+                    <div class="social-links">
+                        <a href="#" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" target="_blank" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <i class="fas fa-envelope"></i>
+                        Contacto
+                    </h4>
+                    <p class="contact-email">contacto@abimael.com</p>
+                    <p class="contact-phone">+34 XXX XXX XXX</p>
+                    <p class="contact-location">Madrid, España</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Abimael Ortiz Álvarez. Todos los derechos reservados.</p>
+                <div class="footer-links">
+                    <a href="admin-login.html">Administración</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/content-generator.js"></script>
+</body>
+</html>

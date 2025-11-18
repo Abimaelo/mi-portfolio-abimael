@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Abimael Ortiz Álvarez</title>
+    <meta name="description" content="Contacta con Abimael Ortiz Álvarez para proyectos fotográficos, colaboraciones y consultas.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Dynamic Styles -->
+    <link rel="stylesheet" href="css/dynamic-styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-dynamic.html" class="logo-link">
+                    <span class="logo-text">Abimael Ortiz Álvarez</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <!-- Navigation será generado dinámicamente -->
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title" id="contactTitle">Contacto</h1>
+            <p class="page-subtitle" id="contactSubtitle">Hablemos sobre tu proyecto y exploremos cómo la fotografía puede darle vida</p>
+        </div>
+    </section>
+
+    <!-- Contact Main Content -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-layout">
+                
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <h2 class="form-title" id="formTitle">Envíame un Mensaje</h2>
+                    <p class="form-description" id="formDescription">
+                        Me encantaría escuchar sobre tu proyecto. Completa el formulario 
+                        y te responderé dentro de 24 horas.
+                    </p>
+                    
+                    <form class="contact-form" id="contactForm" data-netlify="true" name="contact" method="POST">
+                        <input type="hidden" name="form-name" value="contact">
+                        <!-- Form fields serán generados dinámicamente -->
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info-section">
+                    <h2 class="info-title" id="infoTitle">Información de Contacto</h2>
+                    
+                    <div class="contact-methods" id="contactMethods">
+                        <!-- Contact methods serán generados dinámicamente -->
+                    </div>
+
+                    <div class="availability-section">
+                        <h3 class="availability-title">Disponibilidad</h3>
+                        <div class="availability-content">
+                            <p class="availability-status">
+                                <span class="status-indicator available"></span>
+                                <span id="availabilityStatus">Disponible para nuevos proyectos</span>
+                            </p>
+                            <p class="availability-note" id="availabilityNote">
+                                Actualmente aceptando proyectos para 2025. 
+                                Contáctame para discutir fechas y disponibilidad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faqSection">
+        <div class="container">
+            <h2 class="faq-title">Preguntas Frecuentes</h2>
+            <div class="faq-grid" id="faqGrid">
+                <!-- FAQ items serán generados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title" id="footerTitle">Abimael Ortiz Álvarez</h3>
+                    <p class="footer-text" id="footerTagline">Artista Visual y Fotógrafo</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                        Navegación
+                    </h4>
+                    <ul class="footer-links" id="footerNav">
+                        <!-- Footer navigation será generado dinámicamente -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                        Contacto
+                    </h4>
+                    <ul class="footer-contact" id="footerContact">
+                        <!-- Footer contact será generado dinámicamente -->
+                    </ul>
+                    
+                    <!-- Social Media Section -->
+                    <div class="social-media">
+                        <h4 class="footer-subtitle">
+                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                            Sígueme
+                        </h4>
+                        <div class="social-links" id="socialLinks">
+                            <!-- Social links serán generados dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" id="copyright">© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/content-generator.js"></script>
+    <script>
+        function generateContact() {
+            loadSiteData().then(data => {
+                generateNavigation(data.navigation);
+                generateFooter(data);
+
+                // Generate page content
+                document.getElementById('contactTitle').textContent = data.contact.pageTitle;
+                document.getElementById('contactSubtitle').textContent = data.contact.pageSubtitle;
+
+                // Generate contact form
+                generateContactForm(data.contact.form);
+
+                // Generate contact information
+                generateContactInfo(data.contact.info);
+
+                // Generate FAQ
+                generateFAQ(data.contact.faq);
+
+                // Generate availability
+                generateAvailability(data.contact.info.availability);
+            });
+        }
+
+        function generateContactForm(form) {
+            document.getElementById('formTitle').textContent = form.title;
+            document.getElementById('formDescription').textContent = form.description;
+
+            const formElement = document.getElementById('contactForm');
+            
+            form.fields.forEach(field => {
+                const formGroup = document.createElement('div');
+                formGroup.className = 'form-group';
+
+                let fieldHTML = '';
+
+                if (field.type === 'text' || field.type === 'email' || field.type === 'tel') {
+                    fieldHTML = `
+                        <label for="${field.name}" class="form-label">${field.label}</label>
+                        <input type="${field.type}" id="${field.name}" name="${field.name}" class="form-input" ${field.required ? 'required' : ''}>
+                    `;
+                } else if (field.type === 'select') {
+                    fieldHTML = `
+                        <label for="${field.name}" class="form-label">${field.label}</label>
+                        <select id="${field.name}" name="${field.name}" class="form-select" ${field.required ? 'required' : ''}>
+                            <option value="">Selecciona una opción</option>
+                            ${field.options.map(option => `<option value="${option.value}">${option.label}</option>`).join('')}
+                        </select>
+                    `;
+                } else if (field.type === 'textarea') {
+                    fieldHTML = `
+                        <label for="${field.name}" class="form-label">${field.label}</label>
+                        <textarea id="${field.name}" name="${field.name}" class="form-textarea" rows="${field.rows || 6}" 
+                            placeholder="${field.placeholder || ''}" ${field.required ? 'required' : ''}></textarea>
+                    `;
+                } else if (field.type === 'checkbox') {
+                    fieldHTML = `
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="${field.name}" class="form-checkbox">
+                            <span class="checkmark"></span>
+                            ${field.label}
+                        </label>
+                    `;
+                }
+
+                formGroup.innerHTML = fieldHTML;
+                formElement.appendChild(formGroup);
+            });
+
+            // Add submit button
+            const submitButton = document.createElement('button');
+            submitButton.type = 'submit';
+            submitButton.className = 'form-submit';
+            submitButton.textContent = 'Enviar Mensaje';
+            formElement.appendChild(submitButton);
+        }
+
+        function generateContactInfo(info) {
+            document.getElementById('infoTitle').textContent = info.title;
+
+            const methodsContainer = document.getElementById('contactMethods');
+            methodsContainer.innerHTML = '';
+
+            info.methods.forEach(method => {
+                const methodDiv = document.createElement('div');
+                methodDiv.className = 'contact-method';
+                
+                let methodHTML = `
+                    <h3 class="method-title">${capitalizeFirst(method.type)}</h3>
+                    <p class="method-content">
+                `;
+
+                if (method.type === 'email') {
+                    methodHTML += `<a href="mailto:${method.value}" class="contact-link">${method.value}</a>`;
+                } else if (method.type === 'phone') {
+                    methodHTML += `<a href="tel:${method.value}" class="contact-link">${method.value}</a>`;
+                } else {
+                    methodHTML += method.value;
+                }
+
+                methodHTML += `</p><p class="method-description">${method.description}</p>`;
+                
+                methodDiv.innerHTML = methodHTML;
+                methodsContainer.appendChild(methodDiv);
+            });
+        }
+
+        function generateAvailability(availability) {
+            document.getElementById('availabilityStatus').textContent = availability.status;
+            document.getElementById('availabilityNote').textContent = availability.note;
+        }
+
+        function generateFAQ(faqItems) {
+            const faqGrid = document.getElementById('faqGrid');
+            faqGrid.innerHTML = '';
+
+            faqItems.forEach(item => {
+                const faqItem = document.createElement('div');
+                faqItem.className = 'faq-item';
+                
+                faqItem.innerHTML = `
+                    <h3 class="faq-question">${item.question}</h3>
+                    <p class="faq-answer">${item.answer}</p>
+                `;
+                
+                faqGrid.appendChild(faqItem);
+            });
+        }
+
+        function capitalizeFirst(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+
+        // Initialize contact when page loads
+        document.addEventListener('DOMContentLoaded', generateContact);
+
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple form validation and submission
+            const formData = new FormData(this);
+            
+            // Here you would typically send the data to a server
+            // For now, we'll just show a success message
+            alert('¡Gracias por tu mensaje! Te responderé dentro de 24 horas.');
+            
+            // Reset form
+            this.reset();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Abimael Ortiz Álvarez</title>
+    <meta name="description" content="Portfolio completo de Abimael Ortiz Álvarez. Retratos íntimos, paisajes urbanos y fotografía de naturaleza.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-text">Abimael Ortiz Álvarez</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="portfolio.html" class="nav-link active">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contacto</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Portfolio</h1>
+            <p class="page-subtitle">Una colección de trabajos que exploran la intersección entre luz, espacio y narrativa humana</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Tabs -->
+    <section class="portfolio-tabs">
+        <div class="container">
+            <div class="view-tabs">
+                <button class="view-tab active" data-view="individual">Fotos Individuales</button>
+                <button class="view-tab" data-view="series">Series/Galerías</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Photos View -->
+    <section class="portfolio-individual-view active">
+        <div class="container">
+            <!-- Portfolio Filters -->
+            <div class="portfolio-filters">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">Todo</button>
+                    <button class="filter-btn" data-filter="intimate">Retratos Íntimos</button>
+                    <button class="filter-btn" data-filter="urban">Paisajes Urbanos</button>
+                    <button class="filter-btn" data-filter="nature">Naturaleza y Luz</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" id="portfolioGrid">
+                
+                <!-- Retratos Íntimos - Individual -->
+                <div class="portfolio-item" data-category="intimate">
+                    <img src="images/portfolio/intimate-01.jpg" alt="Retrato íntimo - Serie personal" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Retratos Íntimos I</h3>
+                        <p class="portfolio-category">Serie Personal</p>
+                        <button class="view-btn" onclick="openLightbox('images/portfolio/intimate-01.jpg')">Ver</button>
+                    </div>
+                </div>
+
+                <div class="portfolio-item" data-category="intimate">
+                    <img src="images/portfolio/intimate-02.jpg" alt="Retrato íntimo - Serie personal" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Retratos Íntimos II</h3>
+                        <p class="portfolio-category">Serie Personal</p>
+                        <button class="view-btn" onclick="openLightbox('images/portfolio/intimate-02.jpg')">Ver</button>
+                    </div>
+                </div>
+
+                <!-- Paisajes Urbanos - Individual -->
+                <div class="portfolio-item" data-category="urban">
+                    <img src="images/portfolio/urban-01.jpg" alt="Paisaje urbano - Arquitectura" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Concreto y Luz</h3>
+                        <p class="portfolio-category">Arquitectura Urbana</p>
+                        <button class="view-btn" onclick="openLightbox('images/portfolio/urban-01.jpg')">Ver</button>
+                    </div>
+                </div>
+
+                <!-- Naturaleza y Luz - Individual -->
+                <div class="portfolio-item" data-category="nature">
+                    <img src="images/portfolio/nature-01.jpg" alt="Naturaleza y luz - Paisajes" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">Aurora Natural</h3>
+                        <p class="portfolio-category">Paisajes</p>
+                        <button class="view-btn" onclick="openLightbox('images/portfolio/nature-01.jpg')">Ver</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Series/Galleries View -->
+    <section class="portfolio-series-view">
+        <div class="container">
+            <div class="series-gallery">
+                
+                <!-- Serie: Retratos Urbanos -->
+                <div class="series-card" data-series="retratos-urbanos">
+                    <div class="series-preview">
+                        <img src="images/portfolio/series/retratos-urbanos-01.jpg" alt="Retratos Urbanos - Serie completa" class="series-main-image">
+                        <div class="series-overlay">
+                            <h3 class="series-title">Retratos Urbanos</h3>
+                            <p class="series-description">Explorando la humanidad en el paisaje urbano contemporáneo</p>
+                            <div class="series-stats">
+                                <span class="series-count">6 fotos</span>
+                                <span class="series-category">Retratos</span>
+                            </div>
+                            <button class="view-series-btn" onclick="openSeriesLightbox('retratos-urbanos')">Ver Serie Completa</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serie: Arquitecturas Líquidas -->
+                <div class="series-card" data-series="arquitecturas-liquidas">
+                    <div class="series-preview">
+                        <img src="images/portfolio/series/arquitecturas-liquidas-01.jpg" alt="Arquitecturas Líquidas - Serie completa" class="series-main-image">
+                        <div class="series-overlay">
+                            <h3 class="series-title">Arquitecturas Líquidas</h3>
+                            <p class="series-description">Geometrías y texturas que desafían la rigidez del concreto</p>
+                            <div class="series-stats">
+                                <span class="series-count">5 fotos</span>
+                                <span class="series-category">Arquitectura</span>
+                            </div>
+                            <button class="view-series-btn" onclick="openSeriesLightbox('arquitecturas-liquidas')">Ver Serie Completa</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Serie: Luz Natural -->
+                <div class="series-card" data-series="luz-natural">
+                    <div class="series-preview">
+                        <img src="images/portfolio/series/luz-natural-01.jpg" alt="Luz Natural - Serie completa" class="series-main-image">
+                        <div class="series-overlay">
+                            <h3 class="series-title">Luz Natural</h3>
+                            <p class="series-description">Momentos donde la luz transforma paisajes cotidianos</p>
+                            <div class="series-stats">
+                                <span class="series-count">4 fotos</span>
+                                <span class="series-category">Paisajes</span>
+                            </div>
+                            <button class="view-series-btn" onclick="openSeriesLightbox('luz-natural')">Ver Serie Completa</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Art Portfolio Section -->
+    <section class="art-portfolio-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Portfolio Artístico</h2>
+                <p class="section-subtitle">Obras conceptuales que exploran medios diversos: fotografía artística, medio mixto, dibujo y pintura</p>
+            </div>
+            
+            <div class="art-categories">
+                <div class="art-category-card">
+                    <a href="fotografia-artistica.html" class="art-category-link">
+                        <div class="art-category-image">
+                            <img src="images/conceptual/retrato-familiar-01.jpg" alt="Fotografía Artística" class="art-category-img">
+                        </div>
+                        <div class="art-category-info">
+                            <h3 class="art-category-title">Fotografía Artística</h3>
+                            <p class="art-category-description">Obras conceptuales fotográficas que exploran temas de identidad, memoria y percepción contemporánea</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="art-category-card">
+                    <a href="medio-mixto.html" class="art-category-link">
+                        <div class="art-category-image">
+                            <img src="images/mixed-media/fotografia-pintura-01.jpg" alt="Medio Mixto" class="art-category-img">
+                        </div>
+                        <div class="art-category-info">
+                            <h3 class="art-category-title">Medio Mixto</h3>
+                            <p class="art-category-description">Combinaciones de técnicas y materiales que crean nuevas posibilidades expresivas</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="art-category-card">
+                    <a href="dibujo.html" class="art-category-link">
+                        <div class="art-category-image">
+                            <img src="images/drawings/retrato-carboncillo-01.jpg" alt="Dibujo" class="art-category-img">
+                        </div>
+                        <div class="art-category-info">
+                            <h3 class="art-category-title">Dibujo</h3>
+                            <p class="art-category-description">Exploraciones lineales y gestuales que capturan la esencia de lo humano y lo urbano</p>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="art-category-card">
+                    <a href="pintura.html" class="art-category-link">
+                        <div class="art-category-image">
+                            <img src="images/paintings/retrato-oleo-01.jpg" alt="Pintura" class="art-category-img">
+                        </div>
+                        <div class="art-category-info">
+                            <h3 class="art-category-title">Pintura</h3>
+                            <p class="art-category-description">Obras pictóricas que dialogan entre lo contemporáneo y lo atemporal</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img id="lightbox-image" src="" alt="" class="lightbox-image">
+            <div class="lightbox-navigation">
+                <button class="lightbox-prev" onclick="prevImage()">‹</button>
+                <button class="lightbox-next" onclick="nextImage()">›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Series Lightbox Modal -->
+    <div id="series-lightbox" class="series-lightbox">
+        <div class="series-lightbox-content">
+            <span class="series-lightbox-close" onclick="closeSeriesLightbox()">&times;</span>
+            <div class="series-lightbox-main">
+                <img id="series-lightbox-image" src="" alt="" class="series-lightbox-image">
+                <div class="series-navigation">
+                    <button class="series-prev" onclick="navigateSeries(-1)">‹</button>
+                    <button class="series-next" onclick="navigateSeries(1)">›</button>
+                </div>
+            </div>
+            <div class="series-lightbox-info">
+                <h3 id="series-lightbox-title" class="series-lightbox-title"></h3>
+                <p id="series-lightbox-description" class="series-lightbox-description"></p>
+                <div class="series-counter">
+                    <span id="series-current" class="series-current">1</span>
+                    <span class="series-separator">/</span>
+                    <span id="series-total" class="series-total">6</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Abimael Ortiz Álvarez</h3>
+                    <p class="footer-text">Artista Visual y Fotógrafo</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                        Navegación
+                    </h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="index.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                    <polyline points="9,22 9,12 15,12 15,22"/>
+                                </svg>
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="portfolio.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"/>
+                                    <rect x="14" y="3" width="7" height="7"/>
+                                    <rect x="14" y="14" width="7" height="7"/>
+                                    <rect x="3" y="14" width="7" height="7"/>
+                                </svg>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                Sobre Mí
+                            </a>
+                        </li>
+                        <li>
+                            <a href="blog.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                                </svg>
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                Contacto
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                        Contacto
+                    </h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <a href="mailto:hola@abimaelortiz.com">
+                                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                hola@abimaelortiz.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+34600000000">
+                                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                                </svg>
+                                +34 600 000 000
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Social Media Section -->
+                    <div class="social-media">
+                        <h4 class="footer-subtitle">
+                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                            Sígueme
+                        </h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

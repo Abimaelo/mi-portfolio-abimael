@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Abimael Ortiz Álvarez</title>
+    <meta name="description" content="Contacta con Abimael Ortiz Álvarez para proyectos fotográficos, colaboraciones y consultas.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index.html" class="logo-link">
+                    <span class="logo-text">Abimael Ortiz Álvarez</span>
+                </a>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="portfolio.html" class="nav-link">Portfolio</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">Sobre Mí</a>
+                </li>
+                <li class="nav-item">
+                    <a href="blog.html" class="nav-link">Blog</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link active">Contacto</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title">Contacto</h1>
+            <p class="page-subtitle">Hablemos sobre tu proyecto y exploremos cómo la fotografía puede darle vida</p>
+        </div>
+    </section>
+
+    <!-- Contact Main Content -->
+    <section class="contact-main">
+        <div class="container">
+            <div class="contact-layout">
+                
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <h2 class="form-title">Envíame un Mensaje</h2>
+                    <p class="form-description">
+                        Me encantaría escuchar sobre tu proyecto. Completa el formulario 
+                        y te responderé dentro de 24 horas.
+                    </p>
+                    
+                    <form class="contact-form" data-netlify="true" name="contact" method="POST">
+                        <input type="hidden" name="form-name" value="contact">
+                        
+                        <div class="form-group">
+                            <label for="name" class="form-label">Nombre Completo</label>
+                            <input type="text" id="name" name="name" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">Teléfono (opcional)</label>
+                            <input type="tel" id="phone" name="phone" class="form-input">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="project-type" class="form-label">Tipo de Proyecto</label>
+                            <select id="project-type" name="project-type" class="form-select" required>
+                                <option value="">Selecciona una opción</option>
+                                <option value="retrato">Retrato Personal</option>
+                                <option value="editorial">Proyecto Editorial</option>
+                                <option value="boda">Fotografía de Boda</option>
+                                <option value="comercial">Trabajo Comercial</option>
+                                <option value="artistico">Proyecto Artístico</option>
+                                <option value="colaboracion">Colaboración</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="budget" class="form-label">Presupuesto Estimado</label>
+                            <select id="budget" name="budget" class="form-select" required>
+                                <option value="">Selecciona un rango</option>
+                                <option value="menos-500">Menos de €500</option>
+                                <option value="500-1000">€500 - €1,000</option>
+                                <option value="1000-2500">€1,000 - €2,500</option>
+                                <option value="2500-5000">€2,500 - €5,000</option>
+                                <option value="mas-5000">Más de €5,000</option>
+                                <option value="por-definir">Por definir</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeline" class="form-label">Cronograma del Proyecto</label>
+                            <select id="timeline" name="timeline" class="form-select">
+                                <option value="">Selecciona una opción</option>
+                                <option value="urgente">Urgente (1-2 semanas)</option>
+                                <option value="proximo-mes">Próximo mes</option>
+                                <option value="proximos-3-meses">Próximos 3 meses</option>
+                                <option value="proximo-año">Próximo año</option>
+                                <option value="flexible">Flexible</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">Cuéntame sobre tu proyecto</label>
+                            <textarea id="message" name="message" class="form-textarea" rows="6" 
+                                placeholder="Describe tu visión, objetivos, ubicación, fechas preferidas y cualquier detalle que consideres importante..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="newsletter" class="form-checkbox">
+                                <span class="checkmark"></span>
+                                Quiero recibir actualizaciones sobre tu trabajo y nuevos proyectos
+                            </label>
+                        </div>
+
+                        <button type="submit" class="form-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info-section">
+                    <h2 class="info-title">Información de Contacto</h2>
+                    
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <h3 class="method-title">Email</h3>
+                            <p class="method-content">
+                                <a href="mailto:hola@abimaelortiz.com" class="contact-link">
+                                    hola@abimaelortiz.com
+                                </a>
+                            </p>
+                            <p class="method-description">Respuesta en 24 horas</p>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3 class="method-title">Teléfono</h3>
+                            <p class="method-content">
+                                <a href="tel:+34600000000" class="contact-link">
+                                    +34 600 000 000
+                                </a>
+                            </p>
+                            <p class="method-description">Lunes a Viernes, 9:00 - 18:00</p>
+                        </div>
+
+                        <div class="contact-method">
+                            <h3 class="method-title">Ubicación</h3>
+                            <p class="method-content">España</p>
+                            <p class="method-description">Disponible para proyectos locales y internacionales</p>
+                        </div>
+                    </div>
+
+
+
+                    <div class="availability-section">
+                        <h3 class="availability-title">Disponibilidad</h3>
+                        <div class="availability-content">
+                            <p class="availability-status">
+                                <span class="status-indicator available"></span>
+                                Disponible para nuevos proyectos
+                            </p>
+                            <p class="availability-note">
+                                Actualmente aceptando proyectos para 2025. 
+                                Contáctame para discutir fechas y disponibilidad.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="faq-title">Preguntas Frecuentes</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Cuánto tiempo toma completar un proyecto?</h3>
+                    <p class="faq-answer">
+                        El tiempo varía según la complejidad del proyecto. Un retrato personal 
+                        typically toma 1-2 semanas, mientras que proyectos editoriales pueden 
+                        requerir 4-6 semanas incluyendo planificación, ejecución y edición.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Trabajas fuera de España?</h3>
+                    <p class="faq-answer">
+                        Sí, estoy disponible para proyectos internacionales. Los gastos de 
+                        viaje y alojamiento se discuten caso por caso según la ubicación 
+                        y duración del proyecto.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Incluye edición y post-producción?</h3>
+                    <p class="faq-answer">
+                        Sí, todos mis proyectos incluyen edición profesional y post-producción. 
+                        El número de imágenes editadas varía según el paquete contratado.
+                    </p>
+                </div>
+
+                <div class="faq-item">
+                    <h3 class="faq-question">¿Qué incluye una sesión de retrato?</h3>
+                    <p class="faq-answer">
+                        Incluye pre-consulta, sesión fotográfica (1-2 horas), selección de 
+                        mejores imágenes, edición profesional y entrega de imágenes en 
+                        alta resolución.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">Abimael Ortiz Álvarez</h3>
+                    <p class="footer-text">Artista Visual y Fotógrafo</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                        Navegación
+                    </h4>
+                    <ul class="footer-links">
+                        <li>
+                            <a href="index.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+                                    <polyline points="9,22 9,12 15,12 15,22"/>
+                                </svg>
+                                Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="portfolio.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="3" width="7" height="7"/>
+                                    <rect x="14" y="3" width="7" height="7"/>
+                                    <rect x="14" y="14" width="7" height="7"/>
+                                    <rect x="3" y="14" width="7" height="7"/>
+                                </svg>
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="about.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+                                    <circle cx="12" cy="7" r="4"/>
+                                </svg>
+                                Sobre Mí
+                            </a>
+                        </li>
+                        <li>
+                            <a href="blog.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 19.5A2.5 2.5 0 016.5 17H20"/>
+                                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/>
+                                </svg>
+                                Blog
+                            </a>
+                        </li>
+                        <li>
+                            <a href="contact.html">
+                                <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                Contacto
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                        Contacto
+                    </h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <a href="mailto:hola@abimaelortiz.com">
+                                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                hola@abimaelortiz.com
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+34600000000">
+                                <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+                                </svg>
+                                +34 600 000 000
+                            </a>
+                        </li>
+                    </ul>
+                    
+                    <!-- Social Media Section -->
+                    <div class="social-media">
+                        <h4 class="footer-subtitle">
+                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                            Sígueme
+                        </h4>
+                        <div class="social-links">
+                            <a href="#" class="social-link" aria-label="Instagram">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+                                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Facebook">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="Twitter">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/>
+                                </svg>
+                            </a>
+                            <a href="#" class="social-link" aria-label="LinkedIn">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
+                                    <circle cx="4" cy="4" r="2"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/main.js"></script>
+</body>
+</html>

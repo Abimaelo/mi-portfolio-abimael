@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Abimael Ortiz Álvarez</title>
+    <meta name="description" content="Blog de Abimael Ortiz Álvarez. Reflexiones sobre fotografía, proceso creativo y técnicas fotográficas.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Dynamic Styles -->
+    <link rel="stylesheet" href="css/dynamic-styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-dynamic.html" class="logo-link">
+                    <span class="logo-text">Abimael Ortiz Álvarez</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <!-- Navigation será generado dinámicamente -->
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title" id="blogTitle">Blog Creativo</h1>
+            <p class="page-subtitle" id="blogSubtitle">Exploración profunda del proceso creativo, técnicas multidisciplinarias y reflexiones filosóficas sobre el arte visual</p>
+        </div>
+    </section>
+
+    <!-- Creative Process Deep Dive -->
+    <section class="creative-deep-dive" id="creativeDeepDive">
+        <div class="container">
+            <div class="deep-dive-header">
+                <h2 class="deep-dive-title">Proceso Creativo en Profundidad</h2>
+                <p class="deep-dive-subtitle">Metodologías y técnicas que impulsan mi práctica artística multidisciplinaria</p>
+            </div>
+            <div class="process-sections" id="processSections">
+                <!-- Process sections serán generados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophical Reflections -->
+    <section class="philosophical-reflections" id="philosophicalReflections">
+        <div class="container">
+            <div class="reflections-header">
+                <h2 class="reflections-title">Reflexiones Filosóficas</h2>
+                <p class="reflections-subtitle">La dimensión metafísica de la práctica artística</p>
+            </div>
+            <div class="reflections-content" id="reflectionsContent">
+                <!-- Reflections serán generados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article -->
+    <section class="featured-article" id="featuredArticle">
+        <div class="container">
+            <article class="main-article">
+                <div class="article-image">
+                    <img src="" alt="" class="main-article-image" id="featuredImage">
+                </div>
+                <div class="article-content">
+                    <div class="article-meta">
+                        <span class="article-category" id="featuredCategory"></span>
+                        <span class="article-date" id="featuredDate"></span>
+                    </div>
+                    <h2 class="article-title" id="featuredTitle"></h2>
+                    <p class="article-excerpt" id="featuredExcerpt"></p>
+                    <div class="article-full-content" id="featuredContent"></div>
+                    <div class="article-footer">
+                        <div class="article-tags" id="featuredTags">
+                            <!-- Tags serán generados dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="blog-grid-section" id="blogGridSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Más Artículos</h2>
+            </div>
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog articles serán generados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section" id="newsletterSection">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title" id="newsletterTitle">Mantente Actualizado</h2>
+                <p class="newsletter-description" id="newsletterDescription">
+                    Recibe notificaciones sobre nuevos artículos, series fotográficas y 
+                    reflexiones sobre el proceso creativo.
+                </p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Tu email" class="newsletter-input" required>
+                    <button type="submit" class="newsletter-button">Suscribirse</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title" id="footerTitle">Abimael Ortiz Álvarez</h3>
+                    <p class="footer-text" id="footerTagline">Artista Visual y Fotógrafo</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Navegación</h4>
+                    <ul class="footer-links" id="footerNav">
+                        <!-- Footer navigation será generado dinámicamente -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Contacto</h4>
+                    <ul class="footer-contact" id="footerContact">
+                        <!-- Footer contact será generado dinámicamente -->
+                    </ul>
+                    <!-- Social Media Section -->
+                    <div class="social-media">
+                        <h4 class="footer-subtitle">
+                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                            Sígueme
+                        </h4>
+                        <div class="social-links" id="socialLinks">
+                            <!-- Social links serán generados dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" id="copyright">© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/content-generator.js"></script>
+    <script>
+        function generateBlog() {
+            loadSiteData().then(data => {
+                generateNavigation(data.navigation);
+                generateFooter(data);
+
+                // Generate page content
+                document.getElementById('blogTitle').textContent = data.blog.pageTitle;
+                document.getElementById('blogSubtitle').textContent = data.blog.pageSubtitle;
+
+                // Generate process sections
+                generateProcessSections(data.blog.processSections);
+
+                // Generate philosophical reflections
+                generateReflections(data.blog.reflections);
+
+                // Generate featured article
+                generateFeaturedArticle(data.blog.featured);
+
+                // Generate blog grid
+                generateBlogGrid(data.blog.articles);
+
+                // Generate newsletter section
+                generateNewsletter(data.blog.newsletter);
+            });
+        }
+
+        function generateProcessSections(processSections) {
+            const sections = document.getElementById('processSections');
+            sections.innerHTML = '';
+
+            // Photography process
+            if (processSections.photography) {
+                const section = createProcessSection('photography', processSections.photography);
+                sections.appendChild(section);
+            }
+
+            // Drawing process
+            if (processSections.drawing) {
+                const section = createProcessSection('drawing', processSections.drawing);
+                sections.appendChild(section);
+            }
+
+            // Mixed media process
+            if (processSections.mixedMedia) {
+                const section = createProcessSection('mixedMedia', processSections.mixedMedia);
+                sections.appendChild(section);
+            }
+        }
+
+        function createProcessSection(id, process) {
+            const section = document.createElement('div');
+            section.className = 'process-section';
+            
+            let content = `
+                <div class="process-section-header">
+                    <div class="process-icon">
+                        ${getProcessIcon(id)}
+                    </div>
+                    <h3 class="process-section-title">${process.title}</h3>
+                </div>
+                <div class="process-content">
+            `;
+
+            if (process.steps) {
+                content += '<div class="methodology-grid">';
+                process.steps.forEach(step => {
+                    content += `
+                        <div class="methodology-item">
+                            <h4 class="methodology-step">${step.step}</h4>
+                            <p class="methodology-description">${step.description}</p>
+                        </div>
+                    `;
+                });
+                content += '</div>';
+            } else if (process.phases) {
+                content += `
+                    <div class="technique-description">
+                        <p class="technique-intro">${process.description}</p>
+                        <div class="technique-phases">
+                `;
+                process.phases.forEach(phase => {
+                    content += `
+                        <div class="phase-item">
+                            <div class="phase-number">${phase.phase}</div>
+                            <div class="phase-content">
+                                <h5>${phase.title}</h5>
+                                <p>${phase.description}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                content += '</div></div>';
+            } else if (process.cases) {
+                content += `
+                    <div class="experiment-description">
+                        <p class="experiment-intro">${process.description}</p>
+                        <div class="experiment-cases">
+                `;
+                process.cases.forEach(caseStudy => {
+                    content += `
+                        <div class="case-study">
+                            <h4 class="case-title">${caseStudy.title}</h4>
+                            <div class="case-details">
+                                <p class="case-process">
+                                    <strong>Materiales:</strong> ${caseStudy.materials}
+                                </p>
+                                <p class="case-process">
+                                    <strong>Proceso:</strong> ${caseStudy.process}
+                                </p>
+                                <p class="case-concept">
+                                    <strong>Concepto:</strong> ${caseStudy.concept}
+                                </p>
+                            </div>
+                        </div>
+                    `;
+                });
+                content += '</div></div>';
+            }
+
+            content += '</div>';
+            section.innerHTML = content;
+            return section;
+        }
+
+        function getProcessIcon(id) {
+            const icons = {
+                photography: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
+                    <circle cx="12" cy="13" r="4"/>
+                </svg>`,
+                drawing: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 11H1l4-4 4 4h6l-4 4-4-4z"/>
+                    <path d="M21 20V8a2 2 0 0 0-2-2h-5l-2-2H5a2 2 0 0 0-2 2v10"/>
+                </svg>`,
+                mixedMedia: `<svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="2" width="20" height="20" rx="2" rx="2" ry="2" ry="2"/>
+                    <rect x="6" y="6" width="4" height="4"/>
+                    <rect x="14" y="6" width="4" height="4"/>
+                    <rect x="6" y="14" width="4" height="4"/>
+                    <rect x="14" y="14" width="4" height="4"/>
+                </svg>`
+            };
+            return icons[id] || '';
+        }
+
+        function generateReflections(reflections) {
+            const container = document.getElementById('reflectionsContent');
+            container.innerHTML = '';
+
+            reflections.forEach(reflection => {
+                const article = document.createElement('article');
+                article.className = 'reflection-article';
+                
+                article.innerHTML = `
+                    <div class="reflection-quote">
+                        <blockquote>${reflection.quote}</blockquote>
+                        <cite>${reflection.cite}</cite>
+                    </div>
+                    <div class="reflection-content">
+                        <h3>${reflection.title}</h3>
+                        ${reflection.content.split('\n\n').map(p => `<p>${p}</p>`).join('')}
+                    </div>
+                `;
+                
+                container.appendChild(article);
+            });
+        }
+
+        function generateFeaturedArticle(featured) {
+            document.getElementById('featuredImage').src = featured.image;
+            document.getElementById('featuredCategory').textContent = featured.category;
+            document.getElementById('featuredDate').textContent = featured.date;
+            document.getElementById('featuredTitle').textContent = featured.title;
+            document.getElementById('featuredExcerpt').textContent = featured.excerpt;
+            document.getElementById('featuredContent').innerHTML = featured.content.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+            // Generate tags
+            const tagsContainer = document.getElementById('featuredTags');
+            tagsContainer.innerHTML = '';
+            featured.tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'tag';
+                span.textContent = tag;
+                tagsContainer.appendChild(span);
+            });
+        }
+
+        function generateBlogGrid(articles) {
+            const grid = document.getElementById('blogGrid');
+            grid.innerHTML = '';
+
+            articles.forEach(article => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                
+                card.innerHTML = `
+                    <img src="${article.image}" alt="${article.title}" class="blog-card-image">
+                    <div class="blog-card-content">
+                        <div class="article-meta">
+                            <span class="article-category">${article.category}</span>
+                            <span class="article-date">${article.date}</span>
+                        </div>
+                        <h3 class="blog-card-title">${article.title}</h3>
+                        <p class="blog-card-excerpt">${article.excerpt}</p>
+                        <div class="blog-card-footer">
+                            <div class="article-tags">
+                                ${article.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function generateNewsletter(newsletter) {
+            document.getElementById('newsletterTitle').textContent = newsletter.title;
+            document.getElementById('newsletterDescription').textContent = newsletter.description;
+        }
+
+        // Initialize blog when page loads
+        document.addEventListener('DOMContentLoaded', generateBlog);
+    </script>
+</body>
+</html>

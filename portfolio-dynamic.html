@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Abimael Ortiz Álvarez</title>
+    <meta name="description" content="Portfolio completo de Abimael Ortiz Álvarez. Retratos íntimos, paisajes urbanos y fotografía de naturaleza.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Dynamic Styles -->
+    <link rel="stylesheet" href="css/dynamic-styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="index-dynamic.html" class="logo-link">
+                    <span class="logo-text">Abimael Ortiz Álvarez</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <!-- Navigation será generado dinámicamente -->
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="page-title" id="portfolioTitle">Portfolio</h1>
+            <p class="page-subtitle" id="portfolioSubtitle">Una colección de trabajos que exploran la intersección entre luz, espacio y narrativa humana</p>
+        </div>
+    </section>
+
+    <!-- Portfolio Tabs -->
+    <section class="portfolio-tabs">
+        <div class="container">
+            <div class="view-tabs">
+                <button class="view-tab active" data-view="individual">Fotos Individuales</button>
+                <button class="view-tab" data-view="series">Series/Galerías</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Individual Photos View -->
+    <section class="portfolio-individual-view active" id="individualView">
+        <div class="container">
+            <!-- Portfolio Filters -->
+            <div class="portfolio-filters">
+                <div class="filter-buttons" id="filterButtons">
+                    <!-- Filtros serán generados dinámicamente -->
+                </div>
+            </div>
+
+            <!-- Portfolio Grid -->
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Portfolio items serán generados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Series/Galleries View -->
+    <section class="portfolio-series-view" id="seriesView">
+        <div class="container">
+            <div class="series-gallery" id="seriesGallery">
+                <!-- Series serán generados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Art Portfolio Section -->
+    <section class="art-portfolio-section" id="artPortfolioSection">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="artPortfolioTitle">Portfolio Artístico</h2>
+                <p class="section-subtitle" id="artPortfolioSubtitle">Obras conceptuales que exploran medios diversos: fotografía artística, medio mixto, dibujo y pintura</p>
+            </div>
+            
+            <div class="art-categories" id="artCategories">
+                <!-- Art categories serán generados dinámicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+            <img id="lightbox-image" src="" alt="" class="lightbox-image">
+            <div class="lightbox-navigation">
+                <button class="lightbox-prev" onclick="prevImage()">‹</button>
+                <button class="lightbox-next" onclick="nextImage()">›</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Series Lightbox Modal -->
+    <div id="series-lightbox" class="series-lightbox">
+        <div class="series-lightbox-content">
+            <span class="series-lightbox-close" onclick="closeSeriesLightbox()">&times;</span>
+            <div class="series-lightbox-main">
+                <img id="series-lightbox-image" src="" alt="" class="series-lightbox-image">
+                <div class="series-navigation">
+                    <button class="series-prev" onclick="navigateSeries(-1)">‹</button>
+                    <button class="series-next" onclick="navigateSeries(1)">›</button>
+                </div>
+            </div>
+            <div class="series-lightbox-info">
+                <h3 id="series-lightbox-title" class="series-lightbox-title"></h3>
+                <p id="series-lightbox-description" class="series-lightbox-description"></p>
+                <div class="series-counter">
+                    <span id="series-current" class="series-current">1</span>
+                    <span class="series-separator">/</span>
+                    <span id="series-total" class="series-total">6</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title" id="footerTitle">Abimael Ortiz Álvarez</h3>
+                    <p class="footer-text" id="footerTagline">Artista Visual y Fotógrafo</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/>
+                        </svg>
+                        Navegación
+                    </h4>
+                    <ul class="footer-links" id="footerNav">
+                        <!-- Footer navigation será generado dinámicamente -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                        </svg>
+                        Contacto
+                    </h4>
+                    <ul class="footer-contact" id="footerContact">
+                        <!-- Footer contact será generado dinámicamente -->
+                    </ul>
+                    
+                    <!-- Social Media Section -->
+                    <div class="social-media">
+                        <h4 class="footer-subtitle">
+                            <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                            </svg>
+                            Sígueme
+                        </h4>
+                        <div class="social-links" id="socialLinks">
+                            <!-- Social links serán generados dinámicamente -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright" id="copyright">© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/content-generator.js"></script>
+    <script>
+        // Portfolio specific functionality
+        let currentImageIndex = 0;
+        let currentSeriesImages = [];
+        let currentSeriesIndex = 0;
+
+        function generatePortfolio() {
+            loadSiteData().then(data => {
+                generateNavigation(data.navigation);
+                generateFooter(data);
+
+                // Generate page content
+                document.getElementById('portfolioTitle').textContent = data.portfolio.pageTitle;
+                document.getElementById('portfolioSubtitle').textContent = data.portfolio.pageSubtitle;
+
+                // Generate filters
+                const filterButtons = document.getElementById('filterButtons');
+                data.portfolio.filters.forEach(filter => {
+                    const button = document.createElement('button');
+                    button.className = `filter-btn ${filter.id === 'all' ? 'active' : ''}`;
+                    button.setAttribute('data-filter', filter.id);
+                    button.textContent = filter.name;
+                    filterButtons.appendChild(button);
+                });
+
+                // Generate individual photos
+                generateIndividualPhotos(data.portfolio.individualPhotos);
+
+                // Generate series
+                generateSeries(data.portfolio.series);
+
+                // Generate art portfolio
+                generateArtPortfolio(data.portfolio.artPortfolio);
+
+                setupPortfolioEvents();
+            });
+        }
+
+        function generateIndividualPhotos(photos) {
+            const grid = document.getElementById('portfolioGrid');
+            grid.innerHTML = '';
+
+            photos.forEach(photo => {
+                const item = document.createElement('div');
+                item.className = 'portfolio-item';
+                item.setAttribute('data-category', photo.category);
+                
+                item.innerHTML = `
+                    <img src="${photo.image}" alt="${photo.alt}" class="portfolio-image">
+                    <div class="portfolio-overlay">
+                        <h3 class="portfolio-title">${photo.title}</h3>
+                        <p class="portfolio-category">${photo.subcategory}</p>
+                        <button class="view-btn" onclick="openLightbox('${photo.image}')">Ver</button>
+                    </div>
+                `;
+                
+                grid.appendChild(item);
+            });
+        }
+
+        function generateSeries(series) {
+            const gallery = document.getElementById('seriesGallery');
+            gallery.innerHTML = '';
+
+            series.forEach(serie => {
+                const card = document.createElement('div');
+                card.className = 'series-card';
+                card.setAttribute('data-series', serie.id);
+                
+                card.innerHTML = `
+                    <div class="series-preview">
+                        <img src="${serie.previewImage}" alt="${serie.title} - Serie completa" class="series-main-image">
+                        <div class="series-overlay">
+                            <h3 class="series-title">${serie.title}</h3>
+                            <p class="series-description">${serie.description}</p>
+                            <div class="series-stats">
+                                <span class="series-count">${serie.count} fotos</span>
+                                <span class="series-category">${serie.category}</span>
+                            </div>
+                            <button class="view-series-btn" onclick="openSeriesLightbox('${serie.id}')">Ver Serie Completa</button>
+                        </div>
+                    </div>
+                `;
+                
+                gallery.appendChild(card);
+            });
+        }
+
+        function generateArtPortfolio(artPortfolio) {
+            document.getElementById('artPortfolioTitle').textContent = artPortfolio.title;
+            document.getElementById('artPortfolioSubtitle').textContent = artPortfolio.subtitle;
+
+            const categories = document.getElementById('artCategories');
+            categories.innerHTML = '';
+
+            artPortfolio.categories.forEach(category => {
+                const card = document.createElement('div');
+                card.className = 'art-category-card';
+                
+                card.innerHTML = `
+                    <a href="${category.page}" class="art-category-link">
+                        <div class="art-category-image">
+                            <img src="${category.image}" alt="${category.title}" class="art-category-img">
+                        </div>
+                        <div class="art-category-info">
+                            <h3 class="art-category-title">${category.title}</h3>
+                            <p class="art-category-description">${category.description}</p>
+                        </div>
+                    </a>
+                `;
+                
+                categories.appendChild(card);
+            });
+        }
+
+        function setupPortfolioEvents() {
+            // Filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const filter = this.getAttribute('data-filter');
+                    filterPortfolioItems(filter);
+                });
+            });
+
+            // View tabs
+            document.querySelectorAll('.view-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.view-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    const view = this.getAttribute('data-view');
+                    togglePortfolioView(view);
+                });
+            });
+        }
+
+        function filterPortfolioItems(filter) {
+            const items = document.querySelectorAll('.portfolio-item');
+            
+            items.forEach(item => {
+                if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeIn 0.5s ease-in-out';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function togglePortfolioView(view) {
+            const individualView = document.getElementById('individualView');
+            const seriesView = document.getElementById('seriesView');
+            
+            if (view === 'individual') {
+                individualView.classList.add('active');
+                seriesView.classList.remove('active');
+            } else {
+                seriesView.classList.add('active');
+                individualView.classList.remove('active');
+            }
+        }
+
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImage = document.getElementById('lightbox-image');
+            
+            lightboxImage.src = imageSrc;
+            lightbox.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function openSeriesLightbox(seriesId) {
+            loadSiteData().then(data => {
+                const serie = data.portfolio.series.find(s => s.id === seriesId);
+                if (serie) {
+                    currentSeriesImages = serie.images;
+                    currentSeriesIndex = 0;
+                    
+                    updateSeriesLightbox();
+                    document.getElementById('series-lightbox').style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        }
+
+        function updateSeriesLightbox() {
+            const image = document.getElementById('series-lightbox-image');
+            const title = document.getElementById('series-lightbox-title');
+            const description = document.getElementById('series-lightbox-description');
+            const current = document.getElementById('series-current');
+            
+            loadSiteData().then(data => {
+                const serie = data.portfolio.series.find(s => s.images.includes(currentSeriesImages[currentSeriesIndex]));
+                
+                if (serie) {
+                    image.src = currentSeriesImages[currentSeriesIndex];
+                    title.textContent = serie.title;
+                    description.textContent = serie.description;
+                    current.textContent = currentSeriesIndex + 1;
+                    document.getElementById('series-total').textContent = currentSeriesImages.length;
+                }
+            });
+        }
+
+        function navigateSeries(direction) {
+            currentSeriesIndex += direction;
+            
+            if (currentSeriesIndex < 0) {
+                currentSeriesIndex = currentSeriesImages.length - 1;
+            } else if (currentSeriesIndex >= currentSeriesImages.length) {
+                currentSeriesIndex = 0;
+            }
+            
+            updateSeriesLightbox();
+        }
+
+        function closeSeriesLightbox() {
+            document.getElementById('series-lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Initialize portfolio when page loads
+        document.addEventListener('DOMContentLoaded', generatePortfolio);
+
+        // Close lightbox with escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+                closeSeriesLightbox();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Portfolio Abimael - Versión Final</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fa;
+            color: #212529;
+        }
+
+        /* Admin Login Modal */
+        .admin-login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(248, 249, 250, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .admin-login-container {
+            background: white;
+            border: 1px solid #e1e8ed;
+            padding: 3rem;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(33, 37, 41, 0.1);
+        }
+
+        .admin-login-title {
+            font-family: 'Lora', serif;
+            font-size: 1.5rem;
+            color: #212529;
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+
+        .admin-form {
+            text-align: left;
+        }
+
+        .admin-form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .admin-form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #212529;
+            font-size: 0.875rem;
+        }
+
+        .admin-form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0;
+            font-size: 1rem;
+            background: #f8f9fa;
+            color: #212529;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .admin-form-input:focus {
+            outline: none;
+            border-color: #808080;
+            background: white;
+        }
+
+        .admin-btn {
+            width: 100%;
+            padding: 0.875rem;
+            background: #212529;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+
+        .admin-btn:hover {
+            background: #808080;
+        }
+
+        .admin-error {
+            color: #dc3545;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .admin-success {
+            color: #28a745;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .admin-demo {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border: 1px solid #e1e8ed;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .admin-demo:hover {
+            background: #e9ecef;
+        }
+
+        .admin-direct {
+            margin-top: 1rem;
+        }
+
+        .admin-direct-btn {
+            background: #6c757d;
+        }
+
+        .admin-direct-btn:hover {
+            background: #5a6268;
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: 500;
+            font-size: 0.875rem;
+            border-radius: 0.25rem;
+            transition: background 0.3s;
+            z-index: 1000;
+        }
+
+        .logout-btn:hover {
+            background: #c82333;
+        }
+
+        /* Admin Layout */
+        .admin-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .admin-sidebar {
+            width: 280px;
+            background: #ffffff;
+            border-right: 1px solid #e9ecef;
+            overflow-y: auto;
+        }
+
+        .admin-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #212529, #343a40);
+            color: white;
+            text-align: center;
+        }
+
+        .admin-header h1 {
+            font-family: 'Lora', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .admin-nav {
+            padding: 1rem 0;
+        }
+
+        .nav-item {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #495057;
+            text-decoration: none;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .nav-item:hover {
+            background: #f8f9fa;
+            border-left-color: #007bff;
+        }
+
+        .nav-item.active {
+            background: #e3f2fd;
+            color: #1976d2;
+            border-left-color: #1976d2;
+        }
+
+        .admin-main {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .admin-content {
+            padding: 2rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .section-header h2 {
+            font-family: 'Lora', serif;
+            color: #212529;
+            font-size: 1.75rem;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #495057;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 2px rgba(0,123,255,0.25);
+        }
+
+        .textarea-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        /* Upload Components */
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            background: #fafafa;
+            transition: all 0.3s;
+            cursor: pointer;
+            margin-bottom: 1rem;
+        }
+
+        .upload-area:hover {
+            border-color: #007bff;
+            background: #f0f8ff;
+        }
+
+        .upload-area.dragover {
+            border-color: #28a745;
+            background: #f0fff4;
+        }
+
+        .upload-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .upload-button:hover {
+            background: #0056b3;
+        }
+
+        /* Button Styles */
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: #007bff;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #0056b3;
+        }
+
+        .btn-success {
+            background: #28a745;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #5a6268;
+        }
+
+        .btn-sm {
+            padding: 0.375rem 0.75rem;
+            font-size: 0.75rem;
+        }
+
+        /* Cards and Lists */
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .item-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .item-list li {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #e9ecef;
+            transition: background 0.3s;
+        }
+
+        .item-list li:hover {
+            background: #f8f9fa;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .modal-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+        }
+
+        /* Image Gallery */
+        .image-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .image-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .image-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .image-info {
+            padding: 1rem;
+        }
+
+        .image-filename {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Alerts */
+        .alert {
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        .alert-success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+
+        .alert-error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .alert-info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+
+        /* Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .admin-container {
+                flex-direction: column;
+            }
+
+            .admin-sidebar {
+                width: 100%;
+                height: auto;
+            }
+
+            .image-preview {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+
+        /* Status indicators */
+        .status-indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .status-online {
+            background: #28a745;
+        }
+
+        .status-offline {
+            background: #dc3545;
+        }
+
+        /* Netlify Forms */
+        .netlify-form {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 2px solid #e9ecef;
+        }
+
+        .netlify-badge {
+            background: #00ad9f;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="admin-sidebar">
+            <div class="admin-header">
+                <h1>Portfolio CMS</h1>
+                <div style="margin-top: 0.5rem;">
+                    <span class="status-indicator status-online"></span>
+                    <small style="font-size: 0.75rem;">Conectado</small>
+                </div>
+            </div>
+            <nav class="admin-nav">
+                <div class="nav-item active" onclick="showSection('dashboard')">🏠 Dashboard</div>
+                <div class="nav-item" onclick="showSection('imagenes')">🖼️ Imágenes</div>
+                <div class="nav-item" onclick="showSection('contenido')">📝 Contenido</div>
+                <div class="nav-item" onclick="showSection('portfolio')">🎨 Portfolio</div>
+                <div class="nav-item" onclick="showSection('blog')">📰 Blog</div>
+                <div class="nav-item" onclick="showSection('social')">📱 Redes Sociales</div>
+                <div class="nav-item" onclick="showSection('contacto')">📞 Contacto</div>
+                <div class="nav-item" onclick="showSection('forms')">📋 Formularios Netlify</div>
+                <div class="nav-item" onclick="showSection('config')">⚙️ Configuración</div>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="admin-main">
+            <div class="admin-content">
+                
+                <!-- Dashboard -->
+                <section id="dashboard-section" class="content-section">
+                    <div class="section-header">
+                        <h2>🏠 Dashboard</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Bienvenido al CMS del Portfolio</h3>
+                        <p>Este es tu centro de control completo para gestionar todo el contenido del sitio web.</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                            <div class="card" style="text-align: center;">
+                                <h4>🖼️ Imágenes</h4>
+                                <p><span id="imageCount">0</span> imágenes cargadas</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <h4>🎨 Portfolio</h4>
+                                <p><span id="portfolioCount">0</span> obras publicadas</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <h4>📰 Blog</h4>
+                                <p><span id="blogCount">0</span> artículos</p>
+                            </div>
+                            <div class="card" style="text-align: center;">
+                                <h4>📱 Social</h4>
+                                <p><span id="socialCount">0</span> redes sociales</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>🔗 Enlaces Rápidos</h3>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+                            <a href="index.html" class="btn btn-secondary" target="_blank">🏠 Ver Sitio Web</a>
+                            <a href="data.json" class="btn btn-secondary" target="_blank">📊 Ver Datos JSON</a>
+                            <button class="btn btn-success" onclick="exportData()">💾 Exportar Datos</button>
+                            <button class="btn btn-primary" onclick="generateStaticSite()">🚀 Generar Sitio Estático</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Gestión de Imágenes -->
+                <section id="imagenes-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>🖼️ Gestión de Imágenes</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>📤 Cargar Nuevas Imágenes</h3>
+                        <div class="upload-area" id="uploadArea" onclick="document.getElementById('fileInput').click()">
+                            <div>
+                                <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">📁 Arrastra archivos aquí o haz click</p>
+                                <p style="color: #666;">Soporta: JPG, PNG, GIF, WebP (Máx 5MB)</p>
+                                <button type="button" class="upload-button" style="margin-top: 1rem;">
+                                    Seleccionar Archivos
+                                </button>
+                            </div>
+                            <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+                        </div>
+
+                        <div class="loading" id="loading">
+                            <div class="spinner"></div>
+                            <p>Procesando imágenes...</p>
+                        </div>
+
+                        <div id="uploadAlert"></div>
+                    </div>
+
+                    <div class="card">
+                        <h3>📚 Biblioteca de Imágenes</h3>
+                        <div class="image-preview" id="imagePreview"></div>
+                    </div>
+                </section>
+
+                <!-- Editar Contenido -->
+                <section id="contenido-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>📝 Editor de Contenido</h2>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Página de Inicio</h3>
+                            <button class="btn btn-primary btn-sm" onclick="addImageToEditor()">
+                                🖼️ Insertar Imagen
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Título Principal (Línea 1)</label>
+                            <input type="text" id="heroTitle1" class="form-control" placeholder="ABIMAEL">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Título Principal (Línea 2)</label>
+                            <input type="text" id="heroTitle2" class="form-control" placeholder="ORTIZ">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Título Principal (Línea 3)</label>
+                            <input type="text" id="heroTitle3" class="form-control" placeholder="ÁLVAREZ">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Descripción del Sitio</label>
+                            <textarea id="siteDescription" class="form-control textarea-control" placeholder="Descripción del sitio web"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Texto de Scroll</label>
+                            <input type="text" id="scrollText" class="form-control" placeholder="Explora">
+                        </div>
+
+                        <div style="text-align: right;">
+                            <button class="btn btn-success" onclick="saveHomepageContent()">💾 Guardar Contenido</button>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Sobre Mí</h3>
+                        <div class="form-group">
+                            <label>Título de la Página</label>
+                            <input type="text" id="aboutTitle" class="form-control" placeholder="Sobre Mí">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Subtítulo</label>
+                            <input type="text" id="aboutSubtitle" class="form-control" placeholder="Fotógrafo y Artista Visual">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Biografía</label>
+                            <textarea id="aboutBiography" class="form-control textarea-control" placeholder="Escribe tu biografía aquí..."></textarea>
+                            <button class="btn btn-primary btn-sm" onclick="addImageToEditor()" style="margin-top: 0.5rem;">🖼️ Insertar Imagen</button>
+                        </div>
+
+                        <div style="text-align: right;">
+                            <button class="btn btn-success" onclick="saveAboutContent()">💾 Guardar Sobre Mí</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Portfolio -->
+                <section id="portfolio-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>🎨 Gestión de Portfolio</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Agregar Nueva Obra</h3>
+                        <div class="form-group">
+                            <label>Título de la Obra</label>
+                            <input type="text" id="portfolioTitle" class="form-control" placeholder="Título de la obra">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <textarea id="portfolioDescription" class="form-control textarea-control" placeholder="Descripción de la obra"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Categoría</label>
+                            <select id="portfolioCategory" class="form-control">
+                                <option value="conceptual">Fotografía Conceptual</option>
+                                <option value="portraits">Retratos</option>
+                                <option value="nature">Naturaleza</option>
+                                <option value="urban">Urbano</option>
+                                <option value="abstract">Abstracto</option>
+                                <option value="mixed-media">Técnicas Mixtas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Imagen</label>
+                            <div class="upload-area" onclick="selectPortfolioImage()">
+                                <p>Click para seleccionar imagen de la biblioteca</p>
+                                <input type="file" id="portfolioImageInput" accept="image/*" style="display: none;">
+                            </div>
+                            <div id="selectedImagePreview" style="margin-top: 1rem;"></div>
+                        </div>
+                        
+                        <button class="btn btn-success" onclick="addPortfolioItem()">➕ Agregar al Portfolio</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Obras Actuales</h3>
+                        <div id="portfolioList"></div>
+                    </div>
+                </section>
+
+                <!-- Blog -->
+                <section id="blog-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>📰 Gestión de Blog</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Nuevo Artículo</h3>
+                        <div class="form-group">
+                            <label>Título del Artículo</label>
+                            <input type="text" id="blogTitle" class="form-control" placeholder="Título del artículo">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Extracto</label>
+                            <textarea id="blogExcerpt" class="form-control" rows="3" placeholder="Breve resumen del artículo"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Contenido</label>
+                            <textarea id="blogContent" class="form-control textarea-control" placeholder="Contenido del artículo"></textarea>
+                            <button class="btn btn-primary btn-sm" onclick="addImageToBlog()" style="margin-top: 0.5rem;">🖼️ Insertar Imagen</button>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Categoría</label>
+                            <select id="blogCategory" class="form-control">
+                                <option value="photography">Fotografía</option>
+                                <option value="art">Arte</option>
+                                <option value="process">Proceso Creativo</option>
+                                <option value="news">Noticias</option>
+                                <option value="tutorial">Tutorial</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Etiquetas (separadas por comas)</label>
+                            <input type="text" id="blogTags" class="form-control" placeholder="fotografía, retrato, luz">
+                        </div>
+                        
+                        <button class="btn btn-success" onclick="addBlogArticle()">📝 Publicar Artículo</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Artículos Publicados</h3>
+                        <div id="blogList"></div>
+                    </div>
+                </section>
+
+                <!-- Redes Sociales -->
+                <section id="social-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>📱 Redes Sociales</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Agregar Nueva Red Social</h3>
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input type="text" id="socialName" class="form-control" placeholder="Instagram, Facebook, Twitter...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>URL</label>
+                            <input type="url" id="socialUrl" class="form-control" placeholder="https://...">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Etiqueta</label>
+                            <input type="text" id="socialLabel" class="form-control" placeholder="Texto a mostrar">
+                        </div>
+                        
+                        <button class="btn btn-success" onclick="addSocialMedia()">➕ Agregar Red Social</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Redes Sociales Actuales</h3>
+                        <div id="socialList"></div>
+                    </div>
+                </section>
+
+                <!-- Contacto -->
+                <section id="contacto-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>📞 Información de Contacto</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Datos de Contacto</h3>
+                        <div class="form-group">
+                            <label>Email Principal</label>
+                            <input type="email" id="contactEmail" class="form-control" placeholder="hola@abimaelortiz.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Teléfono</label>
+                            <input type="text" id="contactPhone" class="form-control" placeholder="+34 600 000 000">
+                        </div>
+                        
+                        <button class="btn btn-success" onclick="saveContactInfo()">💾 Guardar Información</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Formulario de Contacto Netlify</h3>
+                        <div class="netlify-form">
+                            <h4>Configuración del Formulario <span class="netlify-badge">Netlify Forms</span></h4>
+                            <p>El formulario está configurado para funcionar con Netlify Forms automáticamente.</p>
+                            
+                            <div class="form-group">
+                                <label>Nombre del Formulario</label>
+                                <input type="text" id="formName" class="form-control" value="contact-form" readonly>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>URL de Respuesta (opcional)</label>
+                                <input type="url" id="formAction" class="form-control" placeholder="https://yoursite.com/thanks.html">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Campos del Formulario</label>
+                                <div style="background: #f8f9fa; padding: 1rem; border-radius: 4px;">
+                                    <p><strong>Campos incluidos:</strong></p>
+                                    <ul>
+                                        <li>name - Nombre completo</li>
+                                        <li>email - Email del usuario</li>
+                                        <li>subject - Asunto del mensaje</li>
+                                        <li>message - Mensaje</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-success" onclick="saveNetlifyForm()">💾 Guardar Configuración</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Netlify Forms -->
+                <section id="forms-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>📋 Gestión de Formularios Netlify</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Formulario de Contacto</h3>
+                        <div class="netlify-form">
+                            <h4>Configuración Actual <span class="netlify-badge">ACTIVO</span></h4>
+                            
+                            <div class="form-group">
+                                <label>HTML del Formulario</label>
+                                <textarea id="formHtml" class="form-control textarea-control" rows="10" readonly>
+<form name="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true">
+  <input type="hidden" name="form-name" value="contact-form" />
+  <p style="display: none;">
+    <input name="bot-field" />
+  </p>
+  
+  <div class="form-group">
+    <label for="name">Nombre:</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="subject">Asunto:</label>
+    <input type="text" id="subject" name="subject" required>
+  </div>
+  
+  <div class="form-group">
+    <label for="message">Mensaje:</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+  </div>
+  
+  <div data-netlify-recaptcha="true"></div>
+  
+  <button type="submit">Enviar Mensaje</button>
+</form>
+                                </textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Prueba del Formulario</h3>
+                        <p>Este es cómo se verá el formulario en tu sitio web:</p>
+                        
+                        <form name="contact-form" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-netlify-recaptcha="true" style="background: #f8f9fa; padding: 2rem; border-radius: 8px;">
+                            <input type="hidden" name="form-name" value="contact-form" />
+                            <p style="display: none;">
+                                <input name="bot-field" />
+                            </p>
+                            
+                            <div class="form-group">
+                                <label for="demo-name">Nombre:</label>
+                                <input type="text" id="demo-name" name="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-email">Email:</label>
+                                <input type="email" id="demo-email" name="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-subject">Asunto:</label>
+                                <input type="text" id="demo-subject" name="subject" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="demo-message">Mensaje:</label>
+                                <textarea id="demo-message" name="message" class="form-control textarea-control" rows="5" required></textarea>
+                            </div>
+                            
+                            <div data-netlify-recaptcha="true"></div>
+                            
+                            <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Configuración -->
+                <section id="config-section" class="content-section" style="display: none;">
+                    <div class="section-header">
+                        <h2>⚙️ Configuración del Sitio</h2>
+                    </div>
+
+                    <div class="card">
+                        <h3>Información General</h3>
+                        <div class="form-group">
+                            <label>Título del Sitio</label>
+                            <input type="text" id="siteTitle" class="form-control" value="Portfolio Abimael Ortiz Álvarez">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Autor</label>
+                            <input type="text" id="siteAuthor" class="form-control" value="Abimael Ortiz Álvarez">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Copyright</label>
+                            <input type="text" id="siteCopyright" class="form-control" value="© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.">
+                        </div>
+                        
+                        <button class="btn btn-success" onclick="saveSiteConfig()">💾 Guardar Configuración</button>
+                    </div>
+
+                    <div class="card">
+                        <h3>Exportar / Importar Datos</h3>
+                        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                            <button class="btn btn-secondary" onclick="exportAllData()">📥 Exportar Todo</button>
+                            <button class="btn btn-secondary" onclick="importData()">📤 Importar Datos</button>
+                            <button class="btn btn-danger" onclick="resetAllData()">🗑️ Reset Completo</button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para selección de imágenes -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Seleccionar Imagen</h3>
+                <button class="close-btn" onclick="closeImageModal()">&times;</button>
+            </div>
+            <div id="modalImageGrid" class="image-preview"></div>
+        </div>
+    </div>
+
+    <script>
+        // CMS Object principal
+        const CMS = {
+            images: [],
+            portfolio: [],
+            blog: [],
+            social: [],
+            config: {},
+
+            init() {
+                this.loadAllData();
+                this.updateDashboard();
+                this.setupUploadArea();
+                this.loadExistingData();
+            },
+
+            setupUploadArea() {
+                const uploadArea = document.getElementById('uploadArea');
+                const fileInput = document.getElementById('fileInput');
+
+                if (!uploadArea || !fileInput) return;
+
+                uploadArea.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.add('dragover');
+                });
+
+                uploadArea.addEventListener('dragleave', () => {
+                    uploadArea.classList.remove('dragover');
+                });
+
+                uploadArea.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    uploadArea.classList.remove('dragover');
+                    this.handleFiles(e.dataTransfer.files);
+                });
+
+                fileInput.addEventListener('change', (e) => {
+                    this.handleFiles(e.target.files);
+                });
+            },
+
+            handleFiles(files) {
+                if (files.length === 0) return;
+
+                document.getElementById('loading').style.display = 'block';
+                this.showAlert('Procesando ' + files.length + ' imagen(es)...', 'info');
+
+                Array.from(files).forEach(file => {
+                    if (file.type.startsWith('image/') && file.size <= 5 * 1024 * 1024) {
+                        const reader = new FileReader();
+                        reader.onload = (e) => {
+                            const imageData = {
+                                id: Date.now() + Math.random(),
+                                name: file.name,
+                                size: file.size,
+                                type: file.type,
+                                data: e.target.result,
+                                uploaded: new Date().toISOString()
+                            };
+                            this.images.push(imageData);
+                            this.saveImages();
+                            this.displayImages();
+                            this.updateDashboard();
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        this.showAlert(`Archivo ${file.name} no válido o muy grande`, 'error');
+                    }
+                });
+
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                    this.showAlert('Imágenes cargadas exitosamente', 'success');
+                }, 1000);
+            },
+
+            displayImages() {
+                const preview = document.getElementById('imagePreview');
+                if (!preview) return;
+
+                preview.innerHTML = '';
+
+                this.images.forEach(image => {
+                    const card = document.createElement('div');
+                    card.className = 'image-card';
+                    card.innerHTML = `
+                        <img src="${image.data}" alt="${image.name}">
+                        <div class="image-info">
+                            <div class="image-filename">${image.name}</div>
+                            <div style="font-size: 0.75rem; color: #666; margin-bottom: 0.5rem;">
+                                ${(image.size / 1024).toFixed(1)} KB
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-secondary btn-sm" onclick="CMS.copyImagePath('${image.name}')">
+                                    📋 Copiar
+                                </button>
+                                <button class="btn btn-danger btn-sm" onclick="CMS.deleteImage('${image.id}')">
+                                    🗑️
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    preview.appendChild(card);
+                });
+            },
+
+            copyImagePath(filename) {
+                const url = `images/portfolio/${filename}`;
+                navigator.clipboard.writeText(url).then(() => {
+                    this.showAlert('URL copiada: ' + url, 'success');
+                });
+            },
+
+            deleteImage(id) {
+                if (confirm('¿Eliminar esta imagen?')) {
+                    this.images = this.images.filter(img => img.id != id);
+                    this.saveImages();
+                    this.displayImages();
+                    this.updateDashboard();
+                    this.showAlert('Imagen eliminada', 'success');
+                }
+            },
+
+            loadImages() {
+                const saved = localStorage.getItem('cms_images');
+                if (saved) {
+                    this.images = JSON.parse(saved);
+                    this.displayImages();
+                }
+            },
+
+            saveImages() {
+                localStorage.setItem('cms_images', JSON.stringify(this.images));
+            },
+
+            addSocialMedia() {
+                const name = document.getElementById('socialName').value;
+                const url = document.getElementById('socialUrl').value;
+                const label = document.getElementById('socialLabel').value;
+
+                if (!name || !url || !label) {
+                    this.showAlert('Todos los campos son requeridos', 'error');
+                    return;
+                }
+
+                const social = {
+                    id: Date.now(),
+                    name,
+                    href: url,
+                    label
+                };
+
+                this.social.push(social);
+                this.saveSocial();
+                this.displaySocial();
+                this.updateDashboard();
+
+                // Limpiar formulario
+                document.getElementById('socialName').value = '';
+                document.getElementById('socialUrl').value = '';
+                document.getElementById('socialLabel').value = '';
+
+                this.showAlert('Red social agregada', 'success');
+            },
+
+            editSocialMedia(id) {
+                const social = this.social.find(s => s.id == id);
+                if (!social) return;
+
+                const name = prompt('Nombre:', social.name);
+                const url = prompt('URL:', social.href);
+                const label = prompt('Etiqueta:', social.label);
+
+                if (name && url && label) {
+                    social.name = name;
+                    social.href = url;
+                    social.label = label;
+                    this.saveSocial();
+                    this.displaySocial();
+                    this.showAlert('Red social actualizada', 'success');
+                }
+            },
+
+            deleteSocialMedia(id) {
+                if (confirm('¿Eliminar esta red social?')) {
+                    this.social = this.social.filter(s => s.id != id);
+                    this.saveSocial();
+                    this.displaySocial();
+                    this.updateDashboard();
+                    this.showAlert('Red social eliminada', 'success');
+                }
+            },
+
+            displaySocial() {
+                const list = document.getElementById('socialList');
+                if (!list) return;
+
+                list.innerHTML = '';
+
+                this.social.forEach(social => {
+                    const item = document.createElement('div');
+                    item.style.cssText = 'padding: 1rem; border: 1px solid #e9ecef; border-radius: 4px; margin-bottom: 0.5rem; display: flex; justify-content: space-between; align-items: center;';
+                    item.innerHTML = `
+                        <div>
+                            <strong>${social.name}</strong><br>
+                            <small>${social.href}</small>
+                        </div>
+                        <div style="display: flex; gap: 0.5rem;">
+                            <button class="btn btn-secondary btn-sm" onclick="CMS.editSocialMedia(${social.id})">✏️ Editar</button>
+                            <button class="btn btn-danger btn-sm" onclick="CMS.deleteSocialMedia(${social.id})">🗑️</button>
+                        </div>
+                    `;
+                    list.appendChild(item);
+                });
+            },
+
+            saveSocial() {
+                localStorage.setItem('cms_social', JSON.stringify(this.social));
+            },
+
+            loadSocial() {
+                const saved = localStorage.getItem('cms_social');
+                if (saved) {
+                    this.social = JSON.parse(saved);
+                    this.displaySocial();
+                }
+            },
+
+            addPortfolioItem() {
+                const title = document.getElementById('portfolioTitle').value;
+                const description = document.getElementById('portfolioDescription').value;
+                const category = document.getElementById('portfolioCategory').value;
+                const selectedImage = document.getElementById('selectedImagePreview').dataset.image;
+
+                if (!title || !selectedImage) {
+                    this.showAlert('Título e imagen son requeridos', 'error');
+                    return;
+                }
+
+                const item = {
+                    id: Date.now(),
+                    title,
+                    description,
+                    category,
+                    image: selectedImage,
+                    uploaded: new Date().toISOString()
+                };
+
+                this.portfolio.push(item);
+                this.savePortfolio();
+                this.displayPortfolio();
+                this.updateDashboard();
+
+                // Limpiar formulario
+                document.getElementById('portfolioTitle').value = '';
+                document.getElementById('portfolioDescription').value = '';
+                document.getElementById('portfolioCategory').value = 'conceptual';
+                document.getElementById('selectedImagePreview').innerHTML = '';
+                document.getElementById('selectedImagePreview').dataset.image = '';
+
+                this.showAlert('Obra agregada al portfolio', 'success');
+            },
+
+            displayPortfolio() {
+                const list = document.getElementById('portfolioList');
+                if (!list) return;
+
+                list.innerHTML = '';
+
+                this.portfolio.forEach(item => {
+                    const portfolioItem = document.createElement('div');
+                    portfolioItem.style.cssText = 'padding: 1rem; border: 1px solid #e9ecef; border-radius: 4px; margin-bottom: 1rem;';
+                    portfolioItem.innerHTML = `
+                        <div style="display: flex; gap: 1rem;">
+                            <img src="${item.image}" alt="${item.title}" style="width: 100px; height: 100px; object-fit: cover; border-radius: 4px;">
+                            <div style="flex: 1;">
+                                <h4>${item.title}</h4>
+                                <p><em>${item.category}</em></p>
+                                <p>${item.description}</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1rem; text-align: right;">
+                            <button class="btn btn-danger btn-sm" onclick="CMS.deletePortfolioItem(${item.id})">🗑️ Eliminar</button>
+                        </div>
+                    `;
+                    list.appendChild(portfolioItem);
+                });
+            },
+
+            deletePortfolioItem(id) {
+                if (confirm('¿Eliminar esta obra del portfolio?')) {
+                    this.portfolio = this.portfolio.filter(item => item.id != id);
+                    this.savePortfolio();
+                    this.displayPortfolio();
+                    this.updateDashboard();
+                    this.showAlert('Obra eliminada del portfolio', 'success');
+                }
+            },
+
+            savePortfolio() {
+                localStorage.setItem('cms_portfolio', JSON.stringify(this.portfolio));
+            },
+
+            loadPortfolio() {
+                const saved = localStorage.getItem('cms_portfolio');
+                if (saved) {
+                    this.portfolio = JSON.parse(saved);
+                    this.displayPortfolio();
+                }
+            },
+
+            addBlogArticle() {
+                const title = document.getElementById('blogTitle').value;
+                const excerpt = document.getElementById('blogExcerpt').value;
+                const content = document.getElementById('blogContent').value;
+                const category = document.getElementById('blogCategory').value;
+                const tags = document.getElementById('blogTags').value;
+
+                if (!title || !content) {
+                    this.showAlert('Título y contenido son requeridos', 'error');
+                    return;
+                }
+
+                const article = {
+                    id: Date.now(),
+                    title,
+                    excerpt,
+                    content,
+                    category,
+                    tags: tags.split(',').map(tag => tag.trim()),
+                    published: new Date().toISOString(),
+                    status: 'published'
+                };
+
+                this.blog.push(article);
+                this.saveBlog();
+                this.displayBlog();
+                this.updateDashboard();
+
+                // Limpiar formulario
+                document.getElementById('blogTitle').value = '';
+                document.getElementById('blogExcerpt').value = '';
+                document.getElementById('blogContent').value = '';
+                document.getElementById('blogCategory').value = 'photography';
+                document.getElementById('blogTags').value = '';
+
+                this.showAlert('Artículo publicado', 'success');
+            },
+
+            displayBlog() {
+                const list = document.getElementById('blogList');
+                if (!list) return;
+
+                list.innerHTML = '';
+
+                this.blog.forEach(article => {
+                    const blogItem = document.createElement('div');
+                    blogItem.style.cssText = 'padding: 1rem; border: 1px solid #e9ecef; border-radius: 4px; margin-bottom: 1rem;';
+                    blogItem.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: start;">
+                            <div style="flex: 1;">
+                                <h4>${article.title}</h4>
+                                <p><em>${article.category}</em> - ${new Date(article.published).toLocaleDateString()}</p>
+                                <p>${article.excerpt}</p>
+                                <small>Etiquetas: ${article.tags.join(', ')}</small>
+                            </div>
+                            <div>
+                                <button class="btn btn-danger btn-sm" onclick="CMS.deleteBlogArticle(${article.id})">🗑️ Eliminar</button>
+                            </div>
+                        </div>
+                    `;
+                    list.appendChild(blogItem);
+                });
+            },
+
+            deleteBlogArticle(id) {
+                if (confirm('¿Eliminar este artículo?')) {
+                    this.blog = this.blog.filter(article => article.id != id);
+                    this.saveBlog();
+                    this.displayBlog();
+                    this.updateDashboard();
+                    this.showAlert('Artículo eliminado', 'success');
+                }
+            },
+
+            saveBlog() {
+                localStorage.setItem('cms_blog', JSON.stringify(this.blog));
+            },
+
+            loadBlog() {
+                const saved = localStorage.getItem('cms_blog');
+                if (saved) {
+                    this.blog = JSON.parse(saved);
+                    this.displayBlog();
+                }
+            },
+
+            updateDashboard() {
+                document.getElementById('imageCount').textContent = this.images.length;
+                document.getElementById('portfolioCount').textContent = this.portfolio.length;
+                document.getElementById('blogCount').textContent = this.blog.length;
+                document.getElementById('socialCount').textContent = this.social.length;
+            },
+
+            showAlert(message, type) {
+                const alert = document.getElementById('uploadAlert');
+                if (alert) {
+                    alert.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+                    setTimeout(() => {
+                        alert.innerHTML = '';
+                    }, 3000);
+                }
+            },
+
+            loadAllData() {
+                this.loadImages();
+                this.loadPortfolio();
+                this.loadBlog();
+                this.loadSocial();
+            },
+
+            loadExistingData() {
+                // Cargar datos del data.json existente si existe
+                fetch('data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        // Cargar redes sociales existentes
+                        if (data.homepage && data.homepage.footer && data.homepage.footer.socialMedia) {
+                            this.social = data.homepage.footer.socialMedia.map(social => ({
+                                id: Date.now() + Math.random(),
+                                name: social.name,
+                                href: social.href,
+                                label: social.label
+                            }));
+                            this.saveSocial();
+                            this.displaySocial();
+                        }
+                        
+                        this.updateDashboard();
+                    })
+                    .catch(error => {
+                        console.log('No se pudo cargar data.json existente, usando datos vacíos');
+                    });
+            }
+        };
+
+        // Funciones de navegación
+        function showSection(sectionName) {
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            document.getElementById(sectionName + '-section').style.display = 'block';
+            event.target.classList.add('active');
+        }
+
+        // Funciones de imágenes
+        function addImageToEditor() {
+            CMS.loadImages();
+            showImageModal('editor');
+        }
+
+        function addImageToBlog() {
+            CMS.loadImages();
+            showImageModal('blog');
+        }
+
+        function selectPortfolioImage() {
+            CMS.loadImages();
+            showImageModal('portfolio');
+        }
+
+        function showImageModal(target) {
+            const modal = document.getElementById('imageModal');
+            const grid = document.getElementById('modalImageGrid');
+            grid.innerHTML = '';
+
+            CMS.images.forEach(image => {
+                const card = document.createElement('div');
+                card.className = 'image-card';
+                card.style.cursor = 'pointer';
+                card.onclick = () => insertImageIntoTarget(image, target);
+                
+                card.innerHTML = `
+                    <img src="${image.data}" alt="${image.name}">
+                    <div class="image-info">
+                        <div class="image-filename">${image.name}</div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+
+            modal.style.display = 'block';
+        }
+
+        function insertImageIntoTarget(image, target) {
+            if (target === 'portfolio') {
+                const preview = document.getElementById('selectedImagePreview');
+                preview.innerHTML = `<img src="${image.data}" alt="${image.name}" style="width: 200px; height: 200px; object-fit: cover; border-radius: 4px;">`;
+                preview.dataset.image = image.data;
+            } else {
+                // Para editor y blog, insertar en textarea
+                const editorId = target === 'blog' ? 'blogContent' : 'siteDescription';
+                const editor = document.getElementById(editorId);
+                const imgTag = `![${image.name}](${image.data})`;
+                editor.value += (editor.value ? '\n\n' : '') + imgTag;
+            }
+            
+            closeImageModal();
+        }
+
+        function closeImageModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        // Funciones de guardado
+        function saveHomepageContent() {
+            const content = {
+                heroTitle1: document.getElementById('heroTitle1').value,
+                heroTitle2: document.getElementById('heroTitle2').value,
+                heroTitle3: document.getElementById('heroTitle3').value,
+                siteDescription: document.getElementById('siteDescription').value,
+                scrollText: document.getElementById('scrollText').value
+            };
+
+            localStorage.setItem('cms_homepage', JSON.stringify(content));
+            CMS.showAlert('Contenido de la página de inicio guardado', 'success');
+        }
+
+        function saveAboutContent() {
+            const content = {
+                title: document.getElementById('aboutTitle').value,
+                subtitle: document.getElementById('aboutSubtitle').value,
+                biography: document.getElementById('aboutBiography').value
+            };
+
+            localStorage.setItem('cms_about', JSON.stringify(content));
+            CMS.showAlert('Contenido de "Sobre Mí" guardado', 'success');
+        }
+
+        function saveContactInfo() {
+            const contact = {
+                email: document.getElementById('contactEmail').value,
+                phone: document.getElementById('contactPhone').value
+            };
+
+            localStorage.setItem('cms_contact', JSON.stringify(contact));
+            CMS.showAlert('Información de contacto guardada', 'success');
+        }
+
+        function saveNetlifyForm() {
+            const formConfig = {
+                name: document.getElementById('formName').value,
+                action: document.getElementById('formAction').value
+            };
+
+            localStorage.setItem('cms_netlify_form', JSON.stringify(formConfig));
+            CMS.showAlert('Configuración de Netlify Forms guardada', 'success');
+        }
+
+        function saveSiteConfig() {
+            const config = {
+                title: document.getElementById('siteTitle').value,
+                author: document.getElementById('siteAuthor').value,
+                copyright: document.getElementById('siteCopyright').value
+            };
+
+            localStorage.setItem('cms_config', JSON.stringify(config));
+            CMS.showAlert('Configuración del sitio guardada', 'success');
+        }
+
+        // Funciones de exportación/importación
+        function exportAllData() {
+            const allData = {
+                images: CMS.images,
+                portfolio: CMS.portfolio,
+                blog: CMS.blog,
+                social: CMS.social,
+                config: JSON.parse(localStorage.getItem('cms_config') || '{}'),
+                homepage: JSON.parse(localStorage.getItem('cms_homepage') || '{}'),
+                about: JSON.parse(localStorage.getItem('cms_about') || '{}'),
+                contact: JSON.parse(localStorage.getItem('cms_contact') || '{}')
+            };
+
+            const dataStr = JSON.stringify(allData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'portfolio-cms-backup.json';
+            link.click();
+            
+            CMS.showAlert('Datos exportados exitosamente', 'success');
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            input.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        try {
+                            const data = JSON.parse(e.target.result);
+                            
+                            if (data.images) {
+                                CMS.images = data.images;
+                                CMS.saveImages();
+                                CMS.displayImages();
+                            }
+                            
+                            if (data.portfolio) {
+                                CMS.portfolio = data.portfolio;
+                                CMS.savePortfolio();
+                                CMS.displayPortfolio();
+                            }
+                            
+                            if (data.blog) {
+                                CMS.blog = data.blog;
+                                CMS.saveBlog();
+                                CMS.displayBlog();
+                            }
+                            
+                            if (data.social) {
+                                CMS.social = data.social;
+                                CMS.saveSocial();
+                                CMS.displaySocial();
+                            }
+                            
+                            CMS.updateDashboard();
+                            CMS.showAlert('Datos importados exitosamente', 'success');
+                        } catch (error) {
+                            CMS.showAlert('Error al importar datos: ' + error.message, 'error');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            };
+            input.click();
+        }
+
+        function resetAllData() {
+            if (confirm('¿Estás seguro de que quieres eliminar TODOS los datos? Esta acción no se puede deshacer.')) {
+                localStorage.clear();
+                CMS.images = [];
+                CMS.portfolio = [];
+                CMS.blog = [];
+                CMS.social = [];
+                
+                CMS.displayImages();
+                CMS.displayPortfolio();
+                CMS.displayBlog();
+                CMS.displaySocial();
+                CMS.updateDashboard();
+                
+                CMS.showAlert('Todos los datos han sido eliminados', 'success');
+            }
+        }
+
+        function generateStaticSite() {
+            CMS.showAlert('Generando sitio estático...', 'info');
+            
+            // Simulación de generación del sitio
+            setTimeout(() => {
+                const config = {
+                    site: {
+                        title: document.getElementById('siteTitle').value || 'Portfolio Abimael',
+                        description: 'Artista Visual y Fotógrafo especializado en retratos, paisajes urbanos y fotografía de naturaleza.',
+                        author: 'Abimael Ortiz Álvarez',
+                        copyright: '© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.'
+                    },
+                    homepage: JSON.parse(localStorage.getItem('cms_homepage') || '{}'),
+                    about: JSON.parse(localStorage.getItem('cms_about') || '{}'),
+                    portfolio: CMS.portfolio,
+                    blog: CMS.blog,
+                    social: CMS.social,
+                    contact: JSON.parse(localStorage.getItem('cms_contact') || '{}')
+                };
+
+                console.log('Configuración generada:', config);
+                CMS.showAlert('Sitio estático generado. Los archivos están listos para deployment en Netlify/GitHub Pages.', 'success');
+            }, 2000);
+        }
+
+        // Inicializar CMS
+        CMS.init();
+
+        // Cargar datos guardados al cargar la página
+        window.addEventListener('load', () => {
+            // Cargar configuraciones
+            const homepage = localStorage.getItem('cms_homepage');
+            if (homepage) {
+                const data = JSON.parse(homepage);
+                document.getElementById('heroTitle1').value = data.heroTitle1 || '';
+                document.getElementById('heroTitle2').value = data.heroTitle2 || '';
+                document.getElementById('heroTitle3').value = data.heroTitle3 || '';
+                document.getElementById('siteDescription').value = data.siteDescription || '';
+                document.getElementById('scrollText').value = data.scrollText || '';
+            }
+
+            const about = localStorage.getItem('cms_about');
+            if (about) {
+                const data = JSON.parse(about);
+                document.getElementById('aboutTitle').value = data.title || '';
+                document.getElementById('aboutSubtitle').value = data.subtitle || '';
+                document.getElementById('aboutBiography').value = data.biography || '';
+            }
+
+            const contact = localStorage.getItem('cms_contact');
+            if (contact) {
+                const data = JSON.parse(contact);
+                document.getElementById('contactEmail').value = data.email || '';
+                document.getElementById('contactPhone').value = data.phone || '';
+            }
+
+            const config = localStorage.getItem('cms_config');
+            if (config) {
+                const data = JSON.parse(config);
+                document.getElementById('siteTitle').value = data.title || '';
+                document.getElementById('siteAuthor').value = data.author || '';
+                document.getElementById('siteCopyright').value = data.copyright || '';
+            }
+        });
+
+        // Sistema de autenticación
+        const AUTH_CREDENTIALS = {
+            'admin': 'admin123'
+        };
+
+        // Verificar autenticación al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            if (sessionStorage.getItem('admin-authenticated') !== 'true') {
+                showLoginModal();
+            } else {
+                // Agregar botón de logout
+                addLogoutButton();
+            }
+        });
+
+        function showLoginModal() {
+            const loginHTML = `
+                <div class="admin-login-overlay" id="loginOverlay">
+                    <div class="admin-login-container">
+                        <h2 class="admin-login-title">Panel de Administración</h2>
+                        <form id="loginForm" class="admin-form">
+                            <div class="admin-form-group">
+                                <label for="username" class="admin-form-label">Usuario:</label>
+                                <input type="text" id="username" class="admin-form-input" required>
+                            </div>
+                            
+                            <div class="admin-form-group">
+                                <label for="password" class="admin-form-label">Contraseña:</label>
+                                <input type="password" id="password" class="admin-form-input" required>
+                            </div>
+                            
+                            <button type="submit" class="admin-btn">
+                                Acceder al Panel
+                            </button>
+                            
+                            <div id="errorMessage" class="admin-error"></div>
+                            <div id="successMessage" class="admin-success"></div>
+                        </form>
+                        
+                        <div class="admin-demo">
+                            <strong>Credenciales de demostración:</strong><br>
+                            Usuario: <code>admin</code><br>
+                            Contraseña: <code>admin123</code>
+                        </div>
+                        
+                        <div class="admin-direct">
+                            <button type="button" id="directAccessBtn" class="admin-btn admin-direct-btn">
+                                Acceso Directo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.body.insertAdjacentHTML('beforeend', loginHTML);
+            
+            // Event listeners del login
+            document.getElementById('loginForm').addEventListener('submit', handleLogin);
+            document.getElementById('directAccessBtn').addEventListener('click', handleDirectAccess);
+            document.querySelector('.admin-demo').addEventListener('click', autoFillCredentials);
+            
+            // Limpiar errores al escribir
+            document.getElementById('username').addEventListener('input', clearError);
+            document.getElementById('password').addEventListener('input', clearError);
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Ocultar mensajes anteriores
+            errorMessage.style.display = 'none';
+            successMessage.style.display = 'none';
+            
+            // Verificar credenciales
+            if (AUTH_CREDENTIALS[username] && AUTH_CREDENTIALS[username] === password) {
+                successMessage.textContent = 'Accediendo al panel...';
+                successMessage.style.display = 'block';
+                
+                // Marcar como autenticado
+                sessionStorage.setItem('admin-authenticated', 'true');
+                sessionStorage.setItem('admin-username', username);
+                sessionStorage.setItem('admin-login-time', new Date().toISOString());
+                
+                setTimeout(() => {
+                    document.getElementById('loginOverlay').remove();
+                    addLogoutButton();
+                }, 1000);
+                
+            } else {
+                errorMessage.textContent = 'Usuario o contraseña incorrectos';
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        function handleDirectAccess() {
+            sessionStorage.setItem('admin-authenticated', 'true');
+            sessionStorage.setItem('admin-username', 'admin');
+            sessionStorage.setItem('admin-login-time', new Date().toISOString());
+            sessionStorage.setItem('admin-direct-access', 'true');
+            
+            document.getElementById('loginOverlay').remove();
+            addLogoutButton();
+        }
+
+        function autoFillCredentials() {
+            document.getElementById('username').value = 'admin';
+            document.getElementById('password').value = 'admin123';
+        }
+
+        function clearError() {
+            document.getElementById('errorMessage').style.display = 'none';
+        }
+
+        function addLogoutButton() {
+            const logoutBtn = document.createElement('button');
+            logoutBtn.className = 'logout-btn';
+            logoutBtn.textContent = 'Cerrar Sesión';
+            logoutBtn.onclick = function() {
+                if (confirm('¿Estás seguro de que quieres cerrar sesión?')) {
+                    sessionStorage.removeItem('admin-authenticated');
+                    sessionStorage.removeItem('admin-username');
+                    sessionStorage.removeItem('admin-login-time');
+                    sessionStorage.removeItem('admin-direct-access');
+                    window.location.reload();
+                }
+            };
+            document.body.appendChild(logoutBtn);
+        }
+
+        // Cerrar sesión al intentar navegar sin autenticación
+        window.addEventListener('beforeunload', function() {
+            // No hacer nada, mantener sesión activa
+        });
+    </script>
+</body>
+</html>
