@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesando Autenticación - Portfolio Abimael</title>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .callback-container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 2rem auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .callback-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .callback-message {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+        
+        .error-message {
+            background: rgba(231, 76, 60, 0.3);
+            border: 1px solid rgba(231, 76, 60, 0.5);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #f8d7da;
+        }
+        
+        .success-message {
+            background: rgba(46, 204, 113, 0.3);
+            border: 1px solid rgba(46, 204, 113, 0.5);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #d4edda;
+        }
+    </style>
+</head>
+<body>
+    <div class="callback-container">
+        <div class="loading-spinner" id="loadingSpinner"></div>
+        <h1 class="callback-title">Procesando Autenticación</h1>
+        <p class="callback-message" id="callbackMessage">
+            Verificando tus credenciales y configurando el acceso...
+        </p>
+    </div>
+
+    <script>
+        // Extract code and state from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const state = urlParams.get('state');
+        const error = urlParams.get('error');
+
+        // Show error if present
+        if (error) {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('callbackMessage').innerHTML = `
+                <div class="error-message">
+                    <strong>Error de Autenticación:</strong><br>
+                    ${error}<br><br>
+                    <small>Serás redirigido al inicio en unos segundos...</small>
+                </div>
+            `;
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 3000);
+            return;
+        }
+
+        // Verify we have a code
+        if (!code) {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('callbackMessage').innerHTML = `
+                <div class="error-message">
+                    <strong>Código de Autorización No Encontrado</strong><br>
+                    No se recibió el código necesario para la autenticación.<br><br>
+                    <small>Serás redirigido al inicio en unos segundos...</small>
+                </div>
+            `;
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 3000);
+            return;
+        }
+
+        // Verify state parameter (CSRF protection)
+        const storedState = sessionStorage.getItem('oauth_state');
+        if (state !== storedState) {
+            document.getElementById('loadingSpinner').style.display = 'none';
+            document.getElementById('callbackMessage').innerHTML = `
+                <div class="error-message">
+                    <strong>Error de Seguridad</strong><br>
+                    Parámetro de estado inválido. Esto puede indicar un intento de ataque CSRF.<br><br>
+                    <small>Serás redirigido al inicio en unos segundos...</small>
+                </div>
+            `;
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 3000);
+            return;
+        }
+
+        // Exchange code for token using Netlify Function
+        async function exchangeToken() {
+            try {
+                const response = await fetch('/.netlify/functions/exchange-token', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ code })
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.access_token) {
+                    // Success - store token and redirect
+                    localStorage.setItem('oauth_token', data.access_token);
+                    localStorage.setItem('oauth_token_type', data.token_type);
+                    localStorage.setItem('oauth_scope', data.scope);
+                    localStorage.setItem('oauth_login_time', new Date().toISOString());
+
+                    // Show success message
+                    document.getElementById('loadingSpinner').style.display = 'none';
+                    document.getElementById('callbackMessage').innerHTML = `
+                        <div class="success-message">
+                            <strong>✅ Autenticación Exitosa</strong><br>
+                            Bienvenido al panel de administración.<br>
+                            Redirigiendo al panel admin...
+                        </div>
+                    `;
+
+                    // Clean up state
+                    sessionStorage.removeItem('oauth_state');
+
+                    // Redirect to admin after a short delay
+                    setTimeout(() => {
+                        window.location.href = '/admin.html';
+                    }, 1500);
+
+                } else {
+                    // Error in token exchange
+                    throw new Error(data.error || 'Token exchange failed');
+                }
+
+            } catch (error) {
+                console.error('OAuth error:', error);
+                
+                document.getElementById('loadingSpinner').style.display = 'none';
+                document.getElementById('callbackMessage').innerHTML = `
+                    <div class="error-message">
+                        <strong>❌ Error de Conexión</strong><br>
+                        No se pudo completar la autenticación.<br>
+                        Error: ${error.message}<br><br>
+                        <small>Serás redirigido al inicio en unos segundos...</small>
+                    </div>
+                `;
+
+                // Clean up
+                sessionStorage.removeItem('oauth_state');
+
+                // Redirect to home after delay
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 3000);
+            }
+        }
+
+        // Start token exchange
+        exchangeToken();
+    </script>
+</body>
+</html>

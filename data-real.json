@@ -1,0 +1,188 @@
+{
+  "general": {
+    "siteTitle": "Abimael Ortiz Álvarez - Artista Visual y Fotógrafo",
+    "siteTagline": "",
+    "siteDescription": "Artista Visual y Fotógrafo especializado en retratos, paisajes urbanos y fotografía de naturaleza. Portfolio editorial y artístico.",
+    "siteAuthor": "Abimael Ortiz Álvarez",
+    "siteCopyright": "© 2025 Abimael Ortiz Álvarez. Todos los derechos reservados.",
+    "siteLogo": ""
+  },
+  "navigation": {
+    "mainMenu": [
+      {
+        "name": "Inicio",
+        "href": "index.html",
+        "active": true
+      },
+      {
+        "name": "Portfolio",
+        "href": "portfolio.html", 
+        "active": false
+      },
+      {
+        "name": "Sobre Mí",
+        "href": "about.html",
+        "active": false
+      },
+      {
+        "name": "Blog",
+        "href": "blog.html",
+        "active": false
+      },
+      {
+        "name": "Contacto",
+        "href": "contact.html",
+        "active": false
+      }
+    ]
+  },
+  "index": {
+    "hero": {
+      "title": {
+        "line1": "ABIMAEL",
+        "line2": "ORTIZ", 
+        "line3": "ÁLVAREZ"
+      },
+      "heroImage": {
+        "src": "images/hero-main.jpg",
+        "alt": "Fotografía de Abimael Ortiz Álvarez"
+      },
+      "navigationDots": [
+        {
+          "label": "Portfolio",
+          "href": "portfolio.html"
+        },
+        {
+          "label": "Sobre Mí",
+          "href": "about.html"
+        },
+        {
+          "label": "Blog", 
+          "href": "blog.html"
+        },
+        {
+          "label": "Contacto",
+          "href": "contact.html"
+        }
+      ],
+      "scrollText": "Explora"
+    },
+    "footer": {
+      "mainTitle": "Abimael Ortiz Álvarez",
+      "subtitle": "Artista Visual y Fotógrafo",
+      "contactInfo": {
+        "email": "hola@abimaelortiz.com",
+        "phone": "+34 600 000 000"
+      },
+      "socialMedia": [
+        {
+          "name": "Instagram",
+          "href": "#",
+          "label": "Instagram"
+        },
+        {
+          "name": "Facebook", 
+          "href": "#",
+          "label": "Facebook"
+        },
+        {
+          "name": "Twitter",
+          "href": "#",
+          "label": "Twitter"
+        },
+        {
+          "name": "LinkedIn",
+          "href": "#",
+          "label": "LinkedIn"
+        }
+      ]
+    }
+  },
+  "portfolio": {
+    "pageTitle": "Portfolio",
+    "description": "Portfolio completo de Abimael Ortiz Álvarez. Retratos íntimos, paisajes urbanos y fotografía de naturaleza.",
+    "sections": {
+      "artPortfolio": {
+        "title": "Portfolio Artístico",
+        "subtitle": "Obras conceptuales que exploran medios diversos: fotografía artística, medio mixto, dibujo y pintura"
+      },
+      "individualView": {
+        "active": true
+      },
+      "seriesView": {
+        "active": false
+      }
+    },
+    "categories": [
+      {
+        "name": "Fotografía Artística",
+        "file": "fotografia-artistica.html"
+      },
+      {
+        "name": "Medio Mixto", 
+        "file": "medio-mixto.html"
+      },
+      {
+        "name": "Dibujo",
+        "file": "dibujo.html"
+      },
+      {
+        "name": "Pintura",
+        "file": "pintura.html"
+      }
+    ]
+  },
+  "about": {
+    "pageTitle": "Sobre Mí - Abimael Ortiz Álvarez",
+    "description": "Conoce mi historia, mi proceso creativo y mi visión artística."
+  },
+  "blog": {
+    "pageTitle": "Blog - Abimael Ortiz Álvarez", 
+    "description": "Reflexiones, procesos creativos y actualizaciones sobre mi trabajo artístico."
+  },
+  "contact": {
+    "pageTitle": "Contacto - Abimael Ortiz Álvarez",
+    "description": "Ponte en contacto conmigo para colaboraciones, exposiciones o consultas."
+  },
+  "socialMedia": [
+    {
+      "name": "Instagram",
+      "href": "#",
+      "label": "Instagram",
+      "icon": "instagram"
+    },
+    {
+      "name": "Facebook",
+      "href": "#", 
+      "label": "Facebook",
+      "icon": "facebook"
+    },
+    {
+      "name": "Twitter",
+      "href": "#",
+      "label": "Twitter", 
+      "icon": "twitter"
+    },
+    {
+      "name": "LinkedIn",
+      "href": "#",
+      "label": "LinkedIn",
+      "icon": "linkedin"
+    }
+  ],
+  "theme": {
+    "colors": {
+      "primary": "#212529",
+      "secondary": "#F8F9FA", 
+      "accent": "#808080",
+      "background": "#FFFFFF",
+      "text": "#212529",
+      "textSecondary": "#6C757D"
+    },
+    "fonts": {
+      "primary": "Lora, serif",
+      "secondary": "Inter, sans-serif",
+      "body": "Inter, sans-serif"
+    }
+  }
+}

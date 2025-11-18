@@ -1,15 +1,14 @@
 [build]
-  # Directorio de salida del build
   publish = "."
-  
-  # Comando de build (opcional para este proyecto estático)
-  command = "# No build needed for static HTML/CSS/JS"
+  command = "echo 'Build complete'"
 
-[build.environment]
-  # Node.js version
-  NODE_VERSION = "18"
+[functions]
+  directory = "netlify/functions"
 
-# Headers de seguridad y rendimiento
+[dev]
+  framework = "netlify"
+
+# Netlify Forms configuration
 [[headers]]
   for = "/*"
   [headers.values]
@@ -18,37 +17,14 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Headers específicos para imágenes
-[[headers]]
-  for = "/images/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
+# Redirects for OAuth callback
+[[redirects]]
+  from = "/callback"
+  to = "/callback.html"
+  status = 200
 
-# Headers específicos para CSS y JS
-[[headers]]
-  for = "/*.css"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-[[headers]]
-  for = "/*.js"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000"
-
-# Redirecciones para SPA (si es necesario en el futuro)
-# [[redirects]]
-#   from = "/*"
-#   to = "/index.html"
-#   status = 200
-
-# Configuración de formularios Netlify
-[forms]
-  # Los formularios están configurados directamente en HTML con data-netlify="true"
-
-# Plugins de Netlify (opcional)
-[[plugins]]
-  package = "@netlify/plugin-sitemap"
-
-# Variables de entorno (configurar en Netlify UI)
-# [build.environment]
-#   VARIABLE_NAME = "value"
+# Redirect to admin if authenticated
+[[redirects]]
+  from = "/admin"
+  to = "/admin.html"
+  status = 200

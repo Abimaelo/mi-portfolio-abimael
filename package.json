@@ -1,0 +1,30 @@
+{
+  "name": "portfolio-abimael-cms",
+  "version": "1.0.0",
+  "description": "Portfolio de Abimael con CMS integrado usando OAuth GitHub",
+  "main": "index.html",
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo 'Build complete'",
+    "dev": "netlify dev"
+  },
+  "keywords": [
+    "portfolio",
+    "cms",
+    "oauth",
+    "github",
+    "netlify",
+    "artista"
+  ],
+  "author": "Abimael Ortiz Álvarez",
+  "license": "MIT",
+  "dependencies": {
+    "@octokit/rest": "^20.0.0"
+  },
+  "devDependencies": {
+    "netlify-cli": "^17.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
