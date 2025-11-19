@@ -4,58 +4,15 @@ let oauthToken = null;
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', async function() {
-    await loadSiteData();
     initializeOAuth();
-    renderContent();
     initializeEventListeners();
 });
 
-// Load site data from JSON
+// Site data loading not needed for static template
+// Data is embedded in HTML and admin functions
 async function loadSiteData() {
-    try {
-        const response = await fetch('data.json');
-        siteData = await response.json();
-    } catch (error) {
-        console.error('Error loading site data:', error);
-        // Fallback to default data if JSON fails to load
-        siteData = getDefaultData();
-    }
-}
-
-// Default data fallback
-function getDefaultData() {
-    return {
-        site: {
-            title: "Portfolio Abimael",
-            author: "Abimael Ortiz Álvarez",
-            description: "Portfolio profesional de Abimael Ortiz Álvarez",
-            copyright: "2025 Abimael Ortiz Álvarez. Todos los derechos reservados."
-        },
-        hero: {
-            title: "Hola, soy",
-            name: "Abimael Ortiz Álvarez",
-            subtitle: "Artista Visual & Fotógrafo",
-            description: "Exploro la intersección entre luz, forma y emoción a través de fotografía artística, pintura y medios mixtos.",
-            image: "images/profile/about-photo.jpg"
-        },
-        about: {
-            description: "Soy un artista visual apasionado por explorar la naturaleza de la percepción y la emoción a través de diferentes medios artísticos. Mi trabajo abarca desde fotografía conceptual hasta pintura al óleo, siempre buscando esa conexión única entre el observador y la obra.",
-            image: "images/profile/about-photo.jpg",
-            stats: {
-                projects: "50+",
-                exhibitions: "15",
-                years: "8"
-            }
-        },
-        portfolio: [],
-        blog: [],
-        social: [],
-        contact: {
-            email: "abimael@example.com",
-            phone: "+1 (555) 123-4567",
-            location: "Madrid, España"
-        }
-    };
+    // Placeholder function for API compatibility
+    console.log('Site data already embedded in HTML');
 }
 
 // Initialize OAuth functionality
@@ -96,7 +53,7 @@ function hideOAuthModal() {
 
 // Initiate GitHub OAuth flow
 function initiateGitHubOAuth() {
-    const clientId = 'Ov23liAelcbN51Po10ep'; // This should be replaced with actual client ID
+    const clientId = 'YOUR_CLIENT_ID_HERE'; // This should be replaced with actual client ID
     const redirectUri = encodeURIComponent(window.location.origin + '/callback.html');
     const scope = 'repo'; // Adjust scope as needed
     const state = generateRandomString(32);
@@ -157,21 +114,12 @@ function generateRandomString(length) {
     return text;
 }
 
-// Render content dynamically
+// Content rendering not needed for static template
+// All content is defined directly in HTML
 function renderContent() {
-    // Site metadata
-    document.getElementById('siteTitle').textContent = siteData.site.title;
-    document.getElementById('siteDescription').content = siteData.site.description;
-    document.getElementById('siteAuthor').content = siteData.site.author;
-
-    // Navigation
-    document.getElementById('navName').textContent = siteData.site.author;
-
-    // Hero section
-    document.getElementById('heroTitle').innerHTML = `${siteData.hero.title} <span id="heroName">${siteData.hero.name}</span>`;
-    document.getElementById('heroSubtitle').textContent = siteData.hero.subtitle;
-    document.getElementById('heroDescription').textContent = siteData.hero.description;
-    document.getElementById('heroImage').src = siteData.hero.image;
+    // This function is kept for API compatibility
+    // but content is already rendered in the HTML
+}
 
     // About section
     document.getElementById('aboutDescription').textContent = siteData.about.description;
@@ -316,9 +264,9 @@ window.SiteAPI = {
             });
             
             if (response.ok) {
-                // Update local data and re-render
+                // Update local data
                 siteData[section] = data;
-                renderContent();
+                console.log(`Content updated for section: ${section}`);
                 return true;
             } else {
                 throw new Error('Update failed');
