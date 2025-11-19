@@ -72,6 +72,18 @@
             margin-top: 1rem;
             color: #d4edda;
         }
+        
+        .debug-info {
+            background: rgba(52, 152, 219, 0.3);
+            border: 1px solid rgba(52, 152, 219, 0.5);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            color: #d6eaf8;
+            font-family: monospace;
+            font-size: 0.9rem;
+            text-align: left;
+        }
     </style>
 </head>
 <body>
@@ -84,11 +96,36 @@
     </div>
 
     <script>
+        // Debug information
+        const debugInfo = {
+            currentUrl: window.location.href,
+            currentOrigin: window.location.origin,
+            protocol: window.location.protocol,
+            hostname: window.location.hostname,
+            timestamp: new Date().toISOString()
+        };
+        
+        console.log('OAuth Callback Debug Info:', debugInfo);
+        
         // Extract code and state from URL
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
         const state = urlParams.get('state');
         const error = urlParams.get('error');
+        
+        // Show debug information
+        document.getElementById('callbackMessage').innerHTML = `
+            <div class="debug-info">
+                <strong>🔍 Información de Diagnóstico:</strong><br><br>
+                <strong>URL Actual:</strong> ${debugInfo.currentUrl}<br>
+                <strong>Protocolo:</strong> ${debugInfo.protocol}<br>
+                <strong>Dominio:</strong> ${debugInfo.hostname}<br>
+                <strong>Tiempo:</strong> ${debugInfo.timestamp}<br><br>
+                <strong>✅ Esta es la URL que debe estar configurada en tu GitHub OAuth App:</strong><br>
+                <code>${debugInfo.currentOrigin}/callback.html</code>
+            </div>
+            Verificando parámetros de autenticación...
+        `;
 
         // Show error if present
         if (error) {
