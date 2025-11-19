@@ -19,9 +19,11 @@ Configurar la autenticación OAuth de GitHub para el CMS del portfolio. Este sis
 
 ```
 Application name: Portfolio Abimael CMS
-Homepage URL: https://tu-usuario.github.io/tu-repositorio
-Authorization callback URL: https://tu-usuario.netlify.app/callback
+Homepage URL: https://tu-sitio.netlify.app
+Authorization callback URL: https://tu-sitio.netlify.app/callback
 ```
+
+⚠️ **IMPORTANTE:** Si planeas usar GitHub Pages en lugar de Netlify, necesitarás modificar la configuración porque el sistema OAuth requiere Netlify Functions para el backend.
 
 ⚠️ **IMPORTANTE:** 
 - Usar URLs reales de tu deployment
@@ -29,8 +31,14 @@ Authorization callback URL: https://tu-usuario.netlify.app/callback
 
 ### 1.3 Obtener Credenciales
 Después de crear la aplicación, GitHub proporcionará:
-- **Client ID** (público)
-- **Client Secret** (privado - guardarlo seguro)
+- **Client ID** (público) - Copiar como está
+- **Client Secret** (privado - guardarlo seguro) - **Copiar EXACTAMENTE como GitHub lo muestra, sin modificar nada**
+
+⚠️ **IMPORTANTE - Client Secret:**
+- **NO** agregar "gho_" ni ningún prefijo
+- **NO** modificar caracteres
+- **Copiar y pegar exactamente** como GitHub lo presenta
+- El formato puede variar (algunos empiezan con letras, otros con números)
 
 ## ⚙️ PASO 2: Configurar Variables de Entorno en Netlify
 
@@ -58,7 +66,7 @@ GITHUB_BRANCH=main
 | Variable | Descripción | Ejemplo |
 |----------|-------------|---------|
 | `GITHUB_CLIENT_ID` | ID público de tu OAuth App | `1234567890abcdef` |
-| `GITHUB_CLIENT_SECRET` | Secreto privado de tu OAuth App | `gho_abcdef1234567890...` |
+| `GITHUB_CLIENT_SECRET` | Secreto privado de tu OAuth App | Copiar exactamente como GitHub lo muestra (puede variar en formato) |
 | `GITHUB_OWNER` | Tu nombre de usuario de GitHub | `abimael-ortiz` |
 | `GITHUB_REPO` | Nombre del repositorio | `portfolio-abimael` |
 | `GITHUB_BRANCH` | Rama donde está el código | `main` |

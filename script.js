@@ -53,7 +53,7 @@ function hideOAuthModal() {
 
 // Initiate GitHub OAuth flow
 function initiateGitHubOAuth() {
-    const clientId = 'Ov23liAelcbN51Po10ep'; // This should be replaced with actual client ID
+    const clientId = 'YOUR_CLIENT_ID_HERE'; // This should be replaced with actual client ID
     const redirectUri = encodeURIComponent(window.location.origin + '/callback.html');
     const scope = 'repo'; // Adjust scope as needed
     const state = generateRandomString(32);
@@ -119,87 +119,7 @@ function generateRandomString(length) {
 function renderContent() {
     // This function is kept for API compatibility
     // but content is already rendered in the HTML
-}
-
-    // About section
-    document.getElementById('aboutDescription').textContent = siteData.about.description;
-    document.getElementById('aboutImage').src = siteData.about.image;
-    document.getElementById('statProjects').textContent = siteData.about.stats.projects;
-    document.getElementById('statExhibitions').textContent = siteData.about.stats.exhibitions;
-    document.getElementById('statYears').textContent = siteData.about.stats.years;
-
-    // Contact section
-    document.getElementById('contactEmail').textContent = siteData.contact.email;
-    document.getElementById('contactPhone').textContent = siteData.contact.phone;
-
-    // Footer
-    document.getElementById('footerName').textContent = siteData.site.author;
-    document.getElementById('footerDescription').textContent = siteData.hero.subtitle;
-    document.getElementById('copyright').textContent = siteData.site.copyright;
-
-    // Social links
-    renderSocialLinks();
-
-    // Portfolio
-    renderPortfolio();
-
-    // Blog
-    renderBlog();
-}
-
-// Render social links
-function renderSocialLinks() {
-    const socialContainer = document.getElementById('socialLinks');
-    socialContainer.innerHTML = '';
-
-    siteData.social.forEach(social => {
-        const link = document.createElement('a');
-        link.href = social.url;
-        link.className = 'social-link';
-        link.innerHTML = `<i class="${social.icon}"></i>`;
-        socialContainer.appendChild(link);
-    });
-}
-
-// Render portfolio items
-function renderPortfolio() {
-    const portfolioGrid = document.getElementById('portfolioGrid');
-    portfolioGrid.innerHTML = '';
-
-    siteData.portfolio.forEach(item => {
-        const portfolioItem = document.createElement('div');
-        portfolioItem.className = `portfolio-item ${item.category}`;
-        portfolioItem.innerHTML = `
-            <img src="${item.image}" alt="${item.title}">
-            <div class="portfolio-overlay">
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-                <a href="${item.image}" class="portfolio-link">Ver Más</a>
-            </div>
-        `;
-        portfolioGrid.appendChild(portfolioItem);
-    });
-}
-
-// Render blog posts
-function renderBlog() {
-    const blogGrid = document.getElementById('blogGrid');
-    blogGrid.innerHTML = '';
-
-    siteData.blog.forEach(post => {
-        const blogItem = document.createElement('div');
-        blogItem.className = 'blog-item';
-        blogItem.innerHTML = `
-            <img src="${post.image}" alt="${post.title}">
-            <div class="blog-content">
-                <h3>${post.title}</h3>
-                <p class="blog-date">${post.date}</p>
-                <p>${post.excerpt}</p>
-                <a href="#" class="blog-link">Leer Más</a>
-            </div>
-        `;
-        blogGrid.appendChild(blogItem);
-    });
+    // No action needed - all content is static in HTML
 }
 
 // Initialize event listeners
