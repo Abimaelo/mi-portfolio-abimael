@@ -53,7 +53,7 @@ function hideOAuthModal() {
 
 // Initiate GitHub OAuth flow
 function initiateGitHubOAuth() {
-    const clientId = 'YOUR_CLIENT_ID_HERE'; // This should be replaced with actual client ID
+    const clientId = 'Ov23liAelcbN51Po10ep'; // This should be replaced with actual client ID
     const redirectUri = encodeURIComponent(window.location.origin + '/callback.html');
     const scope = 'repo'; // Adjust scope as needed
     const state = generateRandomString(32);
